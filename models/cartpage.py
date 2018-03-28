@@ -8,10 +8,8 @@ class CartPage(MyDriver):
 
     def go_to_cart(self):
         self.driver.find_element_by_class_name("fa-shopping-cart").click()
-        self.driver.refresh()
 
     def edit_good_qty(self):
-        self.driver.find_element_by_class_name("fa-shopping-cart").click()
         self.driver.find_element_by_xpath('//*[@id="content"]/form/div/table/tbody/tr/td[4]/div/input').clear()
         self.driver.find_element_by_xpath('//*[@id="content"]/form/div/table/tbody/tr/td[4]/div/input').send_keys('2')
         self.driver.find_element_by_xpath('//*[@id="content"]/form/div/table/tbody/tr/td[4]/div/span/button[1]').click()
