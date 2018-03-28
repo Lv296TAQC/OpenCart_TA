@@ -32,9 +32,9 @@ class RegistrationPage(MyDriver):
     def registration(self):
         self.driver.driver.find_element_by_xpath('//*[@id="content"]/form/div/div/input[2]').click()
 
-driver = webdriver.Chrome(executable_path=r'../webdrivers/chromedriver.exe')
-base_url = "https://taqc296opencart.000webhostapp.com"
-driver.get(base_url)
+# driver = webdriver.Chrome(executable_path=r'../webdrivers/chromedriver.exe')
+# base_url = "https://taqc296opencart.000webhostapp.com"
+# driver.get(base_url)
 
 
 # page = RegistrationPage(driver)
