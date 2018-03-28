@@ -1,11 +1,10 @@
+from selenium import webdriver
 from models.driver import MyDriver
 
 
-class RegistrationPage:
-    driver = MyDriver()
+class RegistrationPage(MyDriver):
 
     def go_to_registration(self):
-        self.driver.go_to_home()
         self.driver.driver.find_element_by_xpath('//*[@id="top-links"]/ul/li[2]/a').click()
         self.driver.driver.find_element_by_xpath('//*[@id="top-links"]/ul/li[2]/ul/li[1]/a').click()
 
@@ -33,14 +32,18 @@ class RegistrationPage:
     def registration(self):
         self.driver.driver.find_element_by_xpath('//*[@id="content"]/form/div/div/input[2]').click()
 
+driver = webdriver.Chrome(executable_path=r'../webdrivers/chromedriver.exe')
+base_url = "https://taqc296opencart.000webhostapp.com"
+driver.get(base_url)
 
-page = RegistrationPage()
-page.go_to_registration()
-page.input_firstname()
-page.input_lastname()
-page.input_email()
-page.input_telephone()
-page.input_password()
-page.input_confirm_password()
-page.check_checkbox()
-page.registration()
+
+# page = RegistrationPage(driver)
+# page.go_to_registration()
+# page.input_firstname()
+# page.input_lastname()
+# page.input_email()
+# page.input_telephone()
+# page.input_password()
+# page.input_confirm_password()
+# page.check_checkbox()
+# page.registration()
