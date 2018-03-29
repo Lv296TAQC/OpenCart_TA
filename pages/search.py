@@ -1,5 +1,5 @@
-from web_pages.basepage import BasePage
-from locators.search_page_locators import SearchPageLocators
+from pages.base import BasePage
+from locators.searchpage import SearchPageLocators
 
 class SearchPage(BasePage):
     """Home page action methods come here. I.e. Python.org"""

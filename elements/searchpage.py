@@ -1,5 +1,5 @@
-from web_page_elements.basepage_element import BasePageElement
-from locators.search_page_locators import SearchPageLocators
+from elements.basepage import BasePageElement
+from locators.searchpage import SearchPageLocators
 
 class SearchPageElements(BasePageElement):
     def __init__(self, driver):

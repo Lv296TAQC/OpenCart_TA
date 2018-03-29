@@ -1,12 +1,8 @@
-from selenium import webdriver
-from models.driver import MyDriver
-from models.loginpage import LoginPage
-from models.mainpage import MainPage
-from models.basepage import BasePage
-from models.locators import CartPageLocators
+from pages.base import BasePage
+from locators.locators import CartPageLocators
 
 
-class CartPage(MyDriver):
+class CartPage(BasePage):
 
     def go_to_cart(self):
         """Make webdriwer go to 'Cart' Page."""

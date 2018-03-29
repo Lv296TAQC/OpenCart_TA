@@ -1,8 +1,8 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from models.basepage import BasePage
-from models.locators import CheckoutPageLocators
+from pages.base import BasePage
+from locators.locators import CheckoutPageLocators
 
 
 class CheckoutPage(BasePage):

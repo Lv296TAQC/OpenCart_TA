@@ -1,4 +1,3 @@
-from models.page_objects.base_page import BasePage
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from OpenCart_TA.models.locators import HomePageLocators

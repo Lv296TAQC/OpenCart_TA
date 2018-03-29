@@ -1,5 +1,4 @@
-from driver.driver_factory import DriverFactory
-from web_pages.basepage import BasePage
+from helpers.driver_factory import DriverFactory
 
 
 class TestPerformSearch:

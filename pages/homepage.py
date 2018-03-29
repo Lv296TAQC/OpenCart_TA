@@ -1,4 +1,4 @@
-from models.basepage import BasePage
+from pages.base import BasePage
 
 
 class HomePage(BasePage):

@@ -3,8 +3,10 @@ which has to be returned by DriverFactory().create_web_driver(driver_name)
 method
 """
 
+from selenium import webdriver
+
 class BasePage:
     """Base class to initialize the base page that will be called from all pages"""
 
-    def __init__(self, driver):
+    def __init__(self, driver=webdriver.Chrome()):
         self.driver = driver

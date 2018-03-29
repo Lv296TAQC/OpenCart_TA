@@ -1,11 +1,11 @@
-from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from models.driver import MyDriver
-from functional.helper import (generate_random_email, get_random_name,
-                               get_random_digit, get_random_password)
+
+from helpers.generators import (generate_random_email, get_random_name,
+                                get_random_digit, get_random_password)
+from pages.base import BasePage
 
 
-class RegistrationPage(MyDriver):
+class RegistrationPage(BasePage):
     last_created_password = None
     last_created_email = None
 
@@ -54,20 +54,4 @@ class RegistrationPage(MyDriver):
         """Make webdriver click 'Continue' Button for registration complete."""
         self.driver.find_element_by_xpath('//*[@id="content"]/form/div/div/input[2]').click()
 
-
-# driver = webdriver.Chrome(executable_path=r'../webdrivers/chromedriver.exe')
-# base_url = "https://taqc296opencart.000webhostapp.com"
-# driver.get(base_url)
-#
-#
-# page = RegistrationPage(driver)
-# page.go_to_registration()
-# page.input_firstname()
-# page.input_lastname()
-# page.input_email()
-# page.input_telephone()
-# page.input_password()
-# page.input_confirm_password()
-# page.check_checkbox()
-# page.registration()
 
