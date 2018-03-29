@@ -1,11 +1,25 @@
-from elements.basepage import BasePageElement
-from locators.searchpage import SearchPageLocators
+from selenium.common.exceptions import NoSuchElementException
 
-class SearchPageElements(BasePageElement):
-    def __init__(self, driver):
-        self.driver = driver
+from locators.searchpage import SearchPageLocators
+from helpers.driver_factory import DriverFactory
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+
+class SearchPageElements:
+
+    driver = DriverFactory.create_web_driver("chrome")
 
     def get_search_field_element(self):
-        driver = self.driver
-        SEARCH_FIELD_ELEMENT = driver.find_element(SearchPageLocators.SEARCH_FIELD)
-        return SEARCH_FIELD_ELEMENT
+        return self.driver.find_element(*SearchPageLocators.SEARCH_FIELD)
+
+    def get_search_button_element(self):
+        return self.driver.find_element(*SearchPageLocators.SEARCH_FIELD)
+
+    def get_search_results(self):
+        try:
+            element = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located(*SearchPageLocators.SEARCH_RESULTS))
+            return element
+        except NoSuchElementException:
+            return False

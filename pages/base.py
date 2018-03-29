@@ -8,5 +8,8 @@ from selenium import webdriver
 class BasePage:
     """Base class to initialize the base page that will be called from all pages"""
 
-    def __init__(self, driver=webdriver.Chrome()):
-        self.driver = driver
+    def __init__(self, driver=None):
+        if driver:
+            self.driver = driver
+        else:
+            self.driver = webdriver.Chrome()
