@@ -3,6 +3,7 @@ from selenium import webdriver
 
 class MyDriver:
     def __init__(self, driver):
+        """Constructor for Basic Page."""
         self.driver = driver
         # self.driver = webdriver.Chrome(executable_path=r'../webdrivers/chromedriver.exe')
         # self.base_url = "https://taqc296opencart.000webhostapp.com"
