@@ -1,27 +1,45 @@
+import pytest
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 
-from models.basepage import BasePage
-# from models.productpage import ProductPage
-# from models.checkoutpage import CheckoutPage
+from models.homepage import HomePage
+from models.productpage import ProductPage
+from models.cartpage import CartPage
+from models.checkoutpage import CheckoutPage
+
 
 class TestPurchase():
 
-    def test_purchase(self):
-        # precondition
-        product_page = BasePage(webdriver.Chrome()).go_to_product()
-        cart_page = product_page.add_to_cart().go_to_cart()
+    @pytest.fixture()
+    def wrap(self):
+        self.driver = webdriver.Chrome()
+        yield
+        self.driver.close()
 
-        checkout_page = cart_page.go_to_checkout()
-        order = checkout_page\
-                .checkout_options('guest')\
-                .add_billing_details()\
-                .add_payment_method()\
-                .confirm_order()\
-                .create_order_obj()
+    def test_purchase(self, wrap):
+        # precondition
+        driver = self.driver
+
+        page = HomePage(driver)
+        page.go_to_product()
+
+        page = ProductPage(driver)
+        page.add_to_cart()
+
+        page.go_to_cart()
+        # page.cart.click()
+
+        page = CartPage(driver)
+        page.go_to_checkout()
+
+        page = CheckoutPage(driver)
+        page.checkout_options()
+        # page.add_billing_details()
+        # page.add_payment_method()
+        # page.confirm_order()
+
+        # order = page.create_order_obj()
 
         #compare the order obj with the order from the order database
 
+        #///////////////////
         #postcondition: delete the order fron the order database
-
-    # self.driver.close()
