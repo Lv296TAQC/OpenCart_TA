@@ -28,5 +28,4 @@ class DriverFactory:
             else:
                 raise ValueError('Unknown type of browser')
 
-        cls._single_web_driver.maximize_window()
         return cls._single_web_driver

@@ -1,20 +1,29 @@
-from pages.base import BasePage
+from webpages.basepage import BasePage
 from locators.searchpage import SearchPageLocators
+from webpageelements.searchpageelements import SearchPageElements
+
 
 class SearchPage(BasePage):
     """Home page action methods come here. I.e. Python.org"""
 
-    #Declares a variable that will contain the retrieved text
-    search_text_element = SearchTextElement()
+    # Declare all web elements, present on web page search page
+    search_page_element = SearchPageElements()
 
     def is_title_matches(self, title):
         """Verifies that some text appears in page title"""
         return title in self.driver.title
 
+    def fill_search_field(self, searched_product):
+        self.search_page_element.get_search_field_element().send_keys(searched_product)
+
     def click_search_button(self):
         """Triggers the search"""
-        element = self.driver.find_element(SearchPageLocators.SEARCH_BUTTON)
-        element.click()
+        self.search_page_element.get_search_button_element().click()
 
-    def perform_search(self, searched_product):
-        pass
+    def perform_search(self, product_name):
+        self.fill_search_field(product_name)
+        self.click_search_button()
+
+    def is_product_matches(self, product_name):
+        self.perform_search(product_name)
+        return self.search_page_element.get_search_results()
