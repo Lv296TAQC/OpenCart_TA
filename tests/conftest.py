@@ -1,6 +1,6 @@
 import pytest
 
-from helpers.driver_factory import DriverFactory
+from helpers.driverfactory import DriverFactory
 from webpages.searchpage import SearchPage
 
 

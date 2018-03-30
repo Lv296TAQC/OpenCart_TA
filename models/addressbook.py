@@ -3,13 +3,15 @@ Contains AddressBook class that provides help with
 interacting with the Address Book page and Add Address form elements.
 """
 
-
+# pylint: disable=too-few-public-methods
 class AddressBook:
     """
     Use to create and compare records
     on the Address Book page and Add Address form.
     """
 
+    # pylint: disable=too-many-instance-attributes
+    # pylint: disable=too-many-arguments
     def __init__(self, first_name=None,
                  last_name=None,
                  company=None,

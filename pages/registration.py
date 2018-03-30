@@ -1,18 +1,21 @@
+"""
+TODO
+"""
 from selenium.webdriver.common.keys import Keys
 
-from helpers.generators import (generate_random_email, get_random_name,
-                                get_random_digit, get_random_password)
+from helpers.generators import (generate_random_email,
+                                get_random_name,
+                                get_random_digit,
+                                get_random_password)
 from pages.base import BasePage
 
 
 class RegistrationPage(BasePage):
+    """
+    TODO
+    """
     last_created_password = None
     last_created_email = None
-
-    def go_to_registration(self):
-        """Make webdriver go to 'Registration' Page."""
-        self.driver.find_element_by_xpath('//*[@id="top-links"]/ul/li[2]/a').click()
-        self.driver.find_element_by_xpath('//*[@id="top-links"]/ul/li[2]/ul/li[1]/a').click()
 
     def input_firstname(self):
         """Make webdriver set random 'First Name' value with presetted length."""
@@ -43,7 +46,10 @@ class RegistrationPage(BasePage):
         self.driver.find_element_by_id("input-password").send_keys(self.last_created_password)
 
     def input_confirm_password(self):
-        """Make webdriver set 'Confirm Password' value (take from last_created_password variable)."""
+        """
+        Make webdriver set 'Confirm Password' value
+        (take from last_created_password variable).
+        """
         self.driver.find_element_by_id("input-confirm").send_keys(self.last_created_password)
 
     def check_checkbox(self):
@@ -53,5 +59,3 @@ class RegistrationPage(BasePage):
     def registration(self):
         """Make webdriver click 'Continue' Button for registration complete."""
         self.driver.find_element_by_xpath('//*[@id="content"]/form/div/div/input[2]').click()
-
-

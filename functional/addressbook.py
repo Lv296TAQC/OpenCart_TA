@@ -192,6 +192,9 @@ class AddressBookAssistant:
         return driver.find_element_by_xpath("//div[@id='account-address']/div[1]").text
 
     def get_form_error_messages(self) -> Tuple[str, str, str, str, str, str]:
+        """
+        TODO
+        """
         driver = self.conf.driver
         errors = driver.find_elements_by_css_selector(".text-danger")
         messages = []

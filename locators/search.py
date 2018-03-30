@@ -1,7 +1,14 @@
+"""
+TODO
+"""
 from selenium.webdriver.common.by import By
+from .base import BasePageLocators
 
-
-class SearchPageLocators:
+# pylint: disable=too-few-public-methods
+class SearchPageLocators(BasePageLocators):
+    """
+    TODO
+    """
     SEARCH_FIELD = (By.NAME, 'search')
     SEARCH_BUTTON = (By.CLASS_NAME, 'btn btn-default btn-lg')
 
@@ -12,6 +19,8 @@ class SearchPageLocators:
     SEARCH_BUTTON_LOCAL = (By.ID, 'button-search')
 
     # appears only if at least 1 product found (raises NoSuchElementException ?)
-    MANAGE_SEARCH_RESULTS = (By.XPATH, "//button[@id='list-view']//parent::div//parent::div//parent::div[@class='row']")
+    MANAGE_SEARCH_RESULTS = (By.XPATH,
+                             "//button[@id='list-view']//parent::"
+                             "div//parent::div//parent::div[@class='row']")
     # appears only if at least 1 product found (raises NoSuchElementException ?)
     SEARCH_RESULTS = (By.XPATH, "//div[@class='product-thumb']")

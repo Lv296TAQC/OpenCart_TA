@@ -3,6 +3,9 @@ from models.personaldetails import PersonalDetails
 
 
 class UserDetailsAssistant:
+    """
+    TODO
+    """
 
     def __init__(self, conf):
         self.conf = conf
@@ -35,9 +38,8 @@ class UserDetailsAssistant:
         """
         driver = self.conf.driver
         self.open_user_edit_form()
-        self.change_data_in_text_fields("input-firstname", user_data.firstname)
-        self.change_data_in_text_fields("input-lastname", user_data.lastname)
+        self.change_data_in_text_fields("input-firstname", user_data.first_name)
+        self.change_data_in_text_fields("input-lastname", user_data.last_name)
         self.change_data_in_text_fields("input-email", user_data.email)
         self.change_data_in_text_fields("input-telephone", user_data.telephone)
         driver.find_element_by_xpath("//form[@class='form-horizontal']/div/div[2]/input").click()
-

@@ -1,10 +1,10 @@
 import pytest
 from selenium import webdriver
 
-from pages.homepage import HomePage
-from pages.productpage import ProductPage
-from pages.cartpage import CartPage
-from pages.checkoutpage import CheckoutPage
+from pages.home import HomePage
+from pages.product import ProductPage
+from pages.cart import CartPage
+from pages.checkout import CheckoutPage
 
 
 class TestPurchase():

@@ -1,6 +1,6 @@
 from selenium import webdriver
 
-from pages.loginpage import LoginPage
+from pages.login import LoginPage
 
 driver = webdriver.Chrome(executable_path=r'./webdrivers/chromedriver.exe')
 base_url = 'https://taqc296opencart.000webhostapp.com'

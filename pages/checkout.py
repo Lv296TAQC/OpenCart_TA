@@ -1,14 +1,24 @@
+"""
+TODO
+"""
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from pages.base import BasePage
-from locators.locators import CheckoutPageLocators
+from locators.checkout import CheckoutPageLocators
 
 
 class CheckoutPage(BasePage):
+    """
+    TODO
+    """
 
     def checkout_options(self):
-        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located(CheckoutPageLocators.STEP_ONE_CONTINUE))
+        """
+        TODO
+        """
+        WebDriverWait(self.driver, 5).until(
+            EC.presence_of_element_located(CheckoutPageLocators.STEP_ONE_CONTINUE))
 
         element = self.driver.find_element(*CheckoutPageLocators.GUEST_ACCOUNT)
         element.click()
@@ -17,13 +27,21 @@ class CheckoutPage(BasePage):
         element.click()
 
     def add_billing_details(self):
-        pass
+        """
+        TODO
+        """
 
     def add_payment_method(self):
-        pass
+        """
+        TODO
+        """
 
     def confirm_order(self):
-        pass
+        """
+        TODO
+        """
 
     def create_order_obj(self):
-        pass
+        """
+        TODO
+        """

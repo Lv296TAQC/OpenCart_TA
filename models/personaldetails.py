@@ -3,7 +3,7 @@ Contains PersonalDetails class that provides help with
 interacting with the Edit Account page.
 """
 
-
+# pylint: disable=too-few-public-methods
 class PersonalDetails:
     """
     Use to edit user's personal info
@@ -11,23 +11,23 @@ class PersonalDetails:
     """
 
     def __init__(self,
-                 firstname=None,
-                 lastname=None,
+                 first_name=None,
+                 last_name=None,
                  email=None,
                  telephone=None):
-        self.firstname = firstname
-        self.lastname = lastname
+        self.first_name = first_name
+        self.last_name = last_name
         self.email = email
         self.telephone = telephone
 
     def __repr__(self):
-        return "{} {} {} {}".format(self.firstname,
-                                    self.lastname,
+        return "{} {} {} {}".format(self.first_name,
+                                    self.last_name,
                                     self.email,
                                     self.telephone)
 
     def __eq__(self, other):
-        return self.firstname == other.firstname \
-               and self.lastname == other.lastname \
+        return self.first_name == other.firstname \
+               and self.last_name == other.lastname \
                and self.email == other.email \
                and self.telephone == other.telephone

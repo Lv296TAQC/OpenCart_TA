@@ -2,8 +2,11 @@
 
 from selenium import webdriver
 
-
+# pylint: disable=too-few-public-methods
 class DriverFactory:
+    """
+    TODO
+    """
     _single_factory = None
     _single_web_driver = None
 
@@ -14,6 +17,9 @@ class DriverFactory:
 
     @classmethod
     def create_web_driver(cls, driver_name='chrome'):
+        """
+        TODO
+        """
         if cls._single_web_driver is None:
             if driver_name.lower() == 'chrome':
                 cls._single_web_driver = webdriver.Chrome()
