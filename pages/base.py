@@ -17,6 +17,13 @@ class BasePage:
         self.url = url
         self.driver = driver if driver else webdriver.Chrome()
 
+    def title(self)-> str:
+        """
+        function to get a title
+        :return: title of page
+        """
+        return self.driver.title
+
     def to_home(self):
         """
         TODO
