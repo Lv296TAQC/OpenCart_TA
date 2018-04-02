@@ -1,5 +1,5 @@
-import pytest
-from selenium import webdriver
+# import pytest
+# from selenium import webdriver
 
 # @pytest.fixture(scope="session", autouse=True)
 # def conf_fixture(request):

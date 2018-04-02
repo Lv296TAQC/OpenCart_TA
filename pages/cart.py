@@ -1,5 +1,5 @@
 """
-TODO
+Cart Page Object Model
 """
 from pages.base import BasePage
 from locators.cart import CartPageLocators
@@ -7,22 +7,22 @@ from locators.cart import CartPageLocators
 
 class CartPage(BasePage):
     """
-    TODO
+    Cart Page Object Model
     """
-
     def edit_good_qty(self):
         """Make webdriver change qty of product in Cart"""
-        self.driver.find_element_by_xpath(
-            '//*[@id="content"]/form/div/table/tbody/tr/td[4]/div/input').clear()
-        self.driver.find_element_by_xpath(
-            '//*[@id="content"]/form/div/table/tbody/tr/td[4]/div/input').send_keys('2')
-        self.driver.find_element_by_xpath(
-            '//*[@id="content"]/form/div/table/tbody/tr/td[4]/div/span/button[1]').click()
+        edit_good_qty = self.driver.find_element(*CartPageLocators.GOOD_QTY_FIELD)
+        edit_good_qty.clear()
+        edit_good_qty.send_keys('2')
+        update_good_qty = self.driver.find_element(*CartPageLocators.UPDATE_GOOD_QTY_BUTTON)
+        update_good_qty.click()
+        return self
 
     def delete_good_from_cart(self):
         """Make webdriver delete product from Cart."""
-        self.driver.find_element_by_xpath(
-            '//*[@id="content"]/form/div/table/tbody/tr/td[4]/div/span/button[2]').click()
+        delete_good = self.driver.find_element(*CartPageLocators.DELETE_GOOD_BUTTON)
+        delete_good.click()
+        return self
 
     def go_to_checkout(self):
         """
@@ -30,6 +30,7 @@ class CartPage(BasePage):
         """
         element = self.driver.find_element(*CartPageLocators.GO_CHECKOUT)
         element.click()
+        return self
 
     def is_on_cart_page(self):
         """
@@ -57,3 +58,4 @@ class CartPage(BasePage):
         """
         continue_button = self.driver.find_element(*CartPageLocators.CONTINUE_BUTTON)
         continue_button.click()
+        return self
