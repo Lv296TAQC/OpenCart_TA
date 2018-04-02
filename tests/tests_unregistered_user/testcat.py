@@ -1,4 +1,3 @@
-from db.desktops import COUNT_CAT_DESKTOPS
 from pages.home import HomePage
 
 
@@ -24,7 +23,7 @@ def test_mac():
 def test_count_subcategories_desktops():
     page = HomePage()
     count = page.navigate_to_home_page().list_category_desktops()
-    assert (len(count) == COUNT_CAT_DESKTOPS)
+    assert (len(count) == 2)
 
 
 def test_show_all_desktops():
