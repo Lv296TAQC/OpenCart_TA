@@ -41,7 +41,7 @@ class HomePage(BasePage):
         """
         TODO
         """
-        self.driver.get("http://127.0.0.1/opencart.com")
+        self.driver.get("http://127.0.0.1")
         return self
 
     def is_on_home_page(self):
@@ -72,7 +72,7 @@ class HomePage(BasePage):
         """
         monitors = self.driver.find_element(*HomePageLocators.MONITORS)
         wait = WebDriverWait(self.driver, 10)
-        wait.until(expected_conditions.element_to_be_clickable((HomePageLocators.MONITORS)))
+        wait.until(expected_conditions.element_to_be_clickable(HomePageLocators.MONITORS))
         monitors.click()
 
     def click_on_phones_tab(self):
@@ -90,11 +90,50 @@ class HomePage(BasePage):
 
     def select_mac_product(self):
         """Make webdriver click Mac product."""
-        self.driver.find_element_by_xpath('//*[@id="menu"]/div[2]/ul/li[1]/a').click()
-        self.driver.find_element_by_xpath(
-            '//*[@id="menu"]/div[2]/ul/li[1]/div/div/ul/li[2]/a').click()
+        desktops_tab = self.driver.find_element(*HomePageLocators.DESKTOPS_TAB)
+        desktops_tab.click()
+        mac = self.driver.find_element(*HomePageLocators.MAC)
+        mac.click()
 
     def add_mac_to_cart(self):
         """Make webdriver add Mac product to Cart."""
         self.driver.find_element_by_xpath('//*[@id="content"]/div[2]/div/div/div[1]/a/img').click()
         self.driver.find_element_by_id("button-cart").click()
+
+    def click_on_desktops_tab(self):
+        """
+        Make webdriver click  Product.
+        :return:
+        """
+        desktops_tab = self.driver.find_element(*HomePageLocators.DESKTOPS_TAB)
+        desktops_tab.click()
+        return self
+
+    def select_pc_product(self):
+        """
+        Make webdriver click pc product.
+        :return: self
+        """
+        self.click_on_desktops_tab()
+        pc_category = self.driver.find_element(*HomePageLocators.PC)
+        pc_category.click()
+        return self
+
+    def list_category_desktops(self):
+        """
+        Make webdriver click desktop and take list of dropdown-menu.
+         :return: list with elements on desktop category
+        """
+        self.click_on_desktops_tab()
+        list_desktops = self.driver.find_elements(*HomePageLocators.LIST_DESKTOPS_TAB)
+        return list_desktops
+
+    def show_all_desktops(self):
+        """
+        Make webdriver click show all product
+         :return: self
+        """
+        self.click_on_desktops_tab()
+        all_desktops = self.driver.find_element(*HomePageLocators.SHOW_ALL_DESKTOPS)
+        all_desktops.click()
+        return self
