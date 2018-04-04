@@ -4,6 +4,7 @@ TODO
 from pages.base import BasePage
 
 
+# pylint: disable=too-few-public-methods
 class ProductsPage(BasePage):
     """
     TODO

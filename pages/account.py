@@ -1,8 +1,8 @@
 """
 Account Page comes here.
 """
-from .base import BasePage
 from locators.account import AccountLocators
+from .base import BasePage
 
 
 class AccountPage(BasePage):

@@ -3,6 +3,7 @@ TODO
 """
 from selenium.webdriver.common.by import By
 
+
 # pylint: disable=too-few-public-methods
 class BasePageLocators:
     """

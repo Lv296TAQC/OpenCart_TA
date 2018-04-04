@@ -40,26 +40,26 @@ class HomePage(BasePage):
         self.driver.find_element(*BasePageLocators.GO_CART).click()
         return CartPage(self.driver)
 
-    def click_on_nav_components(self):
+    def click_nav_components(self):
         """
         Click Component Tab.
         """
         self.driver.find_element(*HomePageLocators.COMPONENTS_TAB).click()
         return self
 
-    def click_on_nav_components_monitors(self):
+    def click_nav_components_monitors(self):
         """
         Click Component Tab.
         Click Monitors.
         """
-        self.click_on_nav_components()
+        self.click_nav_components()
         monitors = self.driver.find_element(*HomePageLocators.MONITORS)
         wait = WebDriverWait(self.driver, 10)
         wait.until(expected_conditions.element_to_be_clickable(HomePageLocators.MONITORS))
         monitors.click()
         return ProductsPage(self.driver)
 
-    def click_on_nav_phones(self):
+    def click_nav_phones(self):
         """
         Click Phones Tab.
         """
@@ -67,18 +67,18 @@ class HomePage(BasePage):
         phones.click()
         return ProductsPage(self.driver)
 
-    def click_on_nav_desktops(self):
+    def click_nav_desktops(self):
         """
         Click Desktops Tab.
         """
         self.driver.find_element(*HomePageLocators.DESKTOPS).click()
         return self
 
-    def click_on_nav_desktops_mac(self):
+    def click_nav_desktops_mac(self):
         """
         Click Desktops Tab.
         Click Mac.
         """
-        self.click_on_nav_desktops()
+        self.click_nav_desktops()
         self.driver.find_element(*BasePageLocators.MAC).click()
         return ProductsPage(self.driver)

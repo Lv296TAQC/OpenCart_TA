@@ -1,8 +1,8 @@
 """
 TODO
 """
-from pages.base import BasePage
 from locators.product import ProductPageLocators
+from pages.base import BasePage
 from pages.cart import CartPage
 
 

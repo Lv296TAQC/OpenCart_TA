@@ -2,14 +2,12 @@
 TODO
 """
 from selenium.webdriver.common.keys import Keys
-from faker import Faker
 
 from helpers.generators import (generate_random_email,
                                 get_random_name,
                                 get_random_digit,
                                 get_random_password)
 from pages.base import BasePage
-
 
 
 class RegistrationPage(BasePage):
@@ -20,9 +18,8 @@ class RegistrationPage(BasePage):
     last_created_email = None
 
     def input_firstname(self):
-        fake = Faker()
         """Make webdriver set random 'First Name' value with presetted length."""
-        self.driver.find_element_by_id("input-firstname").send_keys(fake.first_name())
+        self.driver.find_element_by_id("input-firstname").send_keys(get_random_name(5))
 
     def input_lastname(self):
         """Make webdriver set random 'Last Name' value with presetted length."""

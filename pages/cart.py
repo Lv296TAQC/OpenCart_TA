@@ -1,8 +1,9 @@
 """
 TODO
 """
-from pages.base import BasePage
+# pylint: disable=cyclic-import
 from locators.cart import CartPageLocators
+from pages.base import BasePage
 from pages.checkout import CheckoutPage
 from pages.home import HomePage
 
@@ -24,7 +25,7 @@ class CartPage(BasePage):
         self.driver.find_element_by_xpath(
             '//*[@id="content"]/form/div/table/tbody/tr/td[4]/div/span/button[2]').click()
 
-    def go_to_checkout(self):
+    def goto_checkout(self):
         """
         TODO
         """

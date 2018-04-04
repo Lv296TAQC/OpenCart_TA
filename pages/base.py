@@ -7,6 +7,7 @@ method
 from selenium import webdriver
 
 
+# pylint: disable=too-few-public-methods
 class BasePage:
     """Base class to initialize the base page that will be called from all pages"""
 
