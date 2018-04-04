@@ -1,26 +1,27 @@
 """
-TODO
+Login Page comes here.
 """
+from pages.account import AccountPage
 from pages.base import BasePage
+from locators.login import LoginPageLocators
 
 
 class LoginPage(BasePage):
     """
-    TODO
+    Login Page methods come here.
     """
 
-    def input_email(self):
+    def input_email(self, email):
         """Make webdriver set 'E-Mail' value."""
-            # self.driver.driver.find_element_by_id("input-email").\
-            #     send_keys(RegistrationPage.last_created_email)
-        self.driver.find_element_by_id("input-email").send_keys('oleksandr.makar.ol@gmail.com')
+        self.driver.find_element(*LoginPageLocators.EMAIL_INPUT_FIELD).send_keys(email)
+        return self
 
-    def input_password(self):
+    def input_password(self, password):
         """Make webdriver set 'Password' value."""
-        #     self.driver.driver.find_element_by_id("input-password").\
-        # send_keys(RegistrationPage.last_created_password)
-        self.driver.find_element_by_id("input-password").send_keys('saxon123')
+        self.driver.find_element(*LoginPageLocators.PASSWORD_INPUT_FIELD).send_keys(password)
+        return self
 
     def login(self):
         """Make webdriver initiate login by click 'Login' Button"""
-        self.driver.find_element_by_xpath('//*[@id="content"]/div/div[2]/div/form/input').click()
+        self.driver.find_element(*LoginPageLocators.LOGIN_BUTTON).click()
+        return AccountPage(self.driver)

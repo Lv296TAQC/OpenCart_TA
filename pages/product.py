@@ -3,6 +3,7 @@ TODO
 """
 from pages.base import BasePage
 from locators.product import ProductPageLocators
+from pages.cart import CartPage
 
 
 class ProductPage(BasePage):
@@ -16,6 +17,7 @@ class ProductPage(BasePage):
         """
         element = self.driver.find_element(*ProductPageLocators.BTN_CART)
         element.click()
+        return self
 
     def go_to_cart(self):
         """
@@ -23,10 +25,4 @@ class ProductPage(BasePage):
         """
         element = self.driver.find_element(*ProductPageLocators.GO_CART)
         element.click()
-
-    def add_to_cart_apple_cinema(self):
-        """
-        TODO
-        """
-        add_to_cart_button = self.driver.find_element(*ProductPageLocators.ADD_APPLE_CINEMA)
-        add_to_cart_button.click()
+        return CartPage(self.driver)
