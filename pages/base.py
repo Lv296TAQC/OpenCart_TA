@@ -10,19 +10,9 @@ from selenium import webdriver
 class BasePage:
     """Base class to initialize the base page that will be called from all pages"""
 
-    def __init__(self, driver=None, url='/'):
+    def __init__(self, driver=None):
         """
-        TODO
+        Initialization of base driver
         """
-        self.url = url
         self.driver = driver if driver else webdriver.Chrome()
-
-    def to_home(self):
-        """
-        TODO
-        """
-
-    def to_cart(self):
-        """
-        TODO
-        """
+        self.driver.get("https://demo.opencart.com/")

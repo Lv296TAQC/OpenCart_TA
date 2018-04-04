@@ -1,100 +1,84 @@
 """
-TODO
+Home Page comes here.
 """
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
+
+from locators.base import BasePageLocators
 from locators.home import HomePageLocators
+from pages.cart import CartPage
+from pages.login import LoginPage
+from pages.products import ProductsPage
 from .base import BasePage
 
 
 class HomePage(BasePage):
     """
-    TODO
+    Home Page methods come here.
     """
 
-    def logging(self):
+    def goto_login(self):
         """
-        TODO
+        Go to Login Page.
         """
-        self.driver.find_element_by_xpath('//*[@id="top-links"]/ul/li[2]/a').click()
-        self.driver.find_element_by_xpath('//*[@id="top-links"]/ul/li[2]/ul/li[2]/a').click()
-
-    def input_email(self):
-        """
-        TODO
-        """
-        self.driver.find_element_by_id('input-email').send_keys('Nick123@gmail.com')
-
-    def input_password(self):
-        """
-        TODO
-        """
-        self.driver.find_element_by_id('input-password').send_keys('123123123')
-
-    def login(self):
-        """
-        TODO
-        """
-        self.driver.find_element_by_xpath('//*[@id="content"]/div/div[2]/div/form/input').click()
-
-    def navigate_to_home_page(self):
-        """
-        TODO
-        """
-        self.driver.get("http://127.0.0.1/opencart.com")
-        return self
+        self.driver.find_element(*BasePageLocators.MY_ACCOUNT_DROPDOWN).click()
+        self.driver.find_element(*BasePageLocators.GO_LOGIN).click()
+        return LoginPage(self.driver)
 
     def is_on_home_page(self):
         """
-        TODO
+        Make sure we on Home Page.
         """
-        if self.driver.current_url == "http://127.0.0.1/opencart.com":
+        if self.driver.current_url == "https://demo.opencart.com/":
             return True
         return False
 
-    def click_on_shoping_cart_tab(self):
+    def goto_cart(self):
         """
-        TODO
+        Go to Cart Page.
         """
-        cart_tab = self.driver.find_element(*HomePageLocators.SHOPPING_CART_TAB)
-        cart_tab.click()
+        self.driver.find_element(*BasePageLocators.GO_CART).click()
+        return CartPage(self.driver)
 
-    def click_on_components_tab(self):
+    def click_on_nav_components(self):
         """
-        TODO
+        Click Component Tab.
         """
-        components_tab = self.driver.find_element(*HomePageLocators.COMPONENTS_TAB)
-        components_tab.click()
+        self.driver.find_element(*HomePageLocators.COMPONENTS_TAB).click()
+        return self
 
-    def click_on_monitors(self):
+    def click_on_nav_components_monitors(self):
         """
-        TODO
+        Click Component Tab.
+        Click Monitors.
         """
+        self.click_on_nav_components()
         monitors = self.driver.find_element(*HomePageLocators.MONITORS)
         wait = WebDriverWait(self.driver, 10)
-        wait.until(expected_conditions.element_to_be_clickable((HomePageLocators.MONITORS)))
+        wait.until(expected_conditions.element_to_be_clickable(HomePageLocators.MONITORS))
         monitors.click()
+        return ProductsPage(self.driver)
 
-    def click_on_phones_tab(self):
+    def click_on_nav_phones(self):
         """
-        TODO
+        Click Phones Tab.
         """
         phones = self.driver.find_element(*HomePageLocators.PHONES)
         phones.click()
+        return ProductsPage(self.driver)
 
-    def go_to_product(self):
+    def click_on_nav_desktops(self):
         """
-        TODO
+        Click Desktops Tab.
         """
-        self.driver.get('http://localhost/index.php?route=product/product&product_id=41')
+        self.driver.find_element(*HomePageLocators.DESKTOPS).click()
+        return self
 
-    def select_mac_product(self):
-        """Make webdriver click Mac product."""
-        self.driver.find_element_by_xpath('//*[@id="menu"]/div[2]/ul/li[1]/a').click()
-        self.driver.find_element_by_xpath(
-            '//*[@id="menu"]/div[2]/ul/li[1]/div/div/ul/li[2]/a').click()
-
-    def add_mac_to_cart(self):
-        """Make webdriver add Mac product to Cart."""
-        self.driver.find_element_by_xpath('//*[@id="content"]/div[2]/div/div/div[1]/a/img').click()
-        self.driver.find_element_by_id("button-cart").click()
+    def click_on_nav_desktops_mac(self):
+        """
+        Click Desktops Tab.
+        Click Mac.
+        """
+        self.click_on_nav_desktops()
+        self.driver.find_element(*BasePageLocators.MAC).click()
+        return ProductsPage(self.driver)
