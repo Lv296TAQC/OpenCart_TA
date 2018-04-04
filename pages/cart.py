@@ -1,15 +1,14 @@
 """
-TODO
+Cart Page comes here.
 """
-from pages.base import BasePage
 from locators.cart import CartPageLocators
-from pages.checkout import CheckoutPage
-from pages.home import HomePage
+from .base import BasePage
+from .checkout import CheckoutPage
 
 
 class CartPage(BasePage):
     """
-    TODO
+    Cart Page methods come here.
     """
 
     def edit_good_qty(self, qty):
@@ -24,7 +23,7 @@ class CartPage(BasePage):
         self.driver.find_element_by_xpath(
             '//*[@id="content"]/form/div/table/tbody/tr/td[4]/div/span/button[2]').click()
 
-    def go_to_checkout(self):
+    def goto_checkout(self):
         """
         TODO
         """
@@ -55,4 +54,4 @@ class CartPage(BasePage):
         """
         continue_button = self.driver.find_element(*CartPageLocators.CONTINUE_BUTTON)
         continue_button.click()
-        return HomePage(self.driver)
+        return self.driver

@@ -1,9 +1,9 @@
 """
 Login Page comes here.
 """
-from pages.account import AccountPage
-from pages.base import BasePage
 from locators.login import LoginPageLocators
+from .account import AccountPage
+from .base import BasePage
 
 
 class LoginPage(BasePage):

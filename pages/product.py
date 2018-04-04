@@ -1,14 +1,14 @@
 """
-TODO
+Product Page comes here.
 """
-from pages.base import BasePage
 from locators.product import ProductPageLocators
-from pages.cart import CartPage
+from .base import BasePage
+from .cart import CartPage
 
 
 class ProductPage(BasePage):
     """
-    TODO
+    Product Page methods come here.
     """
 
     def add_to_cart(self):

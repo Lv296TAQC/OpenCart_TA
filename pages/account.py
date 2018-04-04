@@ -1,14 +1,15 @@
 """
 Account Page comes here.
 """
-from .base import BasePage
 from locators.account import AccountLocators
+from .base import BasePage
 
 
 class AccountPage(BasePage):
     """
     Account Page methods come here.
     """
+
     def open_address_book_page(self):
         """
         TODO
