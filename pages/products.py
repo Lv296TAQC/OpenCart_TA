@@ -1,12 +1,12 @@
 """
 Products Page comes here.
 """
+# pylint: disable=too-few-public-methods
 from locators.products import ProductsPageLocators
 from .base import BasePage
 from .product import ProductPage
 
 
-# pylint: disable=too-few-public-methods
 class ProductsPage(BasePage):
     """
     Products Page methods come here.
