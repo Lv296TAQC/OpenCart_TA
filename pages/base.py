@@ -16,4 +16,4 @@ class BasePage:
         Initialization of base driver
         """
         self.driver = driver if driver else webdriver.Chrome()
-        self.driver.get("https://demo.opencart.com/")
+        # driver.get('http://localhost:1234/opencart.com')

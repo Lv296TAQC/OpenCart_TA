@@ -5,7 +5,6 @@ TODO
 from locators.cart import CartPageLocators
 from pages.base import BasePage
 from pages.checkout import CheckoutPage
-from pages.home import HomePage
 
 
 class CartPage(BasePage):
@@ -15,7 +14,8 @@ class CartPage(BasePage):
 
     def edit_good_qty(self, qty):
         """Make webdriver change qty of product in Cart"""
-        edit_field = self.driver.find_element(*CartPageLocators.QTY_FIELD).clear()
+        edit_field = self.driver.find_element(*CartPageLocators.QTY_FIELD)
+        edit_field.clear()
         edit_field.send_keys(qty)
         self.driver.find_element(*CartPageLocators.UPDATE_BUTTON).click()
         return self
@@ -56,4 +56,4 @@ class CartPage(BasePage):
         """
         continue_button = self.driver.find_element(*CartPageLocators.CONTINUE_BUTTON)
         continue_button.click()
-        return HomePage(self.driver)
+        return self
