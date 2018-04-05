@@ -16,3 +16,5 @@ class CartPageLocators(BasePageLocators):
     QTY_FIELD = (By.XPATH, '//*[@id="content"]/form/div/table/tbody/tr/td[4]/div/input')
     UPDATE_BUTTON = (
         By.XPATH, '//*[@id="content"]/form/div/table/tbody/tr/td[4]/div/span/button[1]')
+    DELETE_BUTTON = (
+        By.XPATH, '//*[@id="content"]/form/div/table/tbody/tr/td[4]/div/span/button[2]')

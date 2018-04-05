@@ -23,3 +23,10 @@ class AccountPage(BasePage):
         """
         self.driver.find_element(*AccountLocators.EDIT_ACCOUNT_LINK)
         return self
+
+    def goto_homepage(self):
+        """
+        TODO
+        """
+        self.driver.find_element(*AccountLocators.YOUR_STORE_LINK).click()
+        return self

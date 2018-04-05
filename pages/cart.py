@@ -1,5 +1,5 @@
 """
-Cart Page comes here.
+TODO
 """
 from locators.cart import CartPageLocators
 from .base import BasePage
@@ -13,15 +13,17 @@ class CartPage(BasePage):
 
     def edit_good_qty(self, qty):
         """Make webdriver change qty of product in Cart"""
-        edit_field = self.driver.find_element(*CartPageLocators.QTY_FIELD).clear()
+        edit_field = self.driver.find_element(*CartPageLocators.QTY_FIELD)
+        edit_field.clear()
         edit_field.send_keys(qty)
         self.driver.find_element(*CartPageLocators.UPDATE_BUTTON).click()
         return self
 
     def delete_good_from_cart(self):
         """Make webdriver delete product from Cart."""
-        self.driver.find_element_by_xpath(
-            '//*[@id="content"]/form/div/table/tbody/tr/td[4]/div/span/button[2]').click()
+        self.driver.find_element(*CartPageLocators.DELETE_BUTTON).click()
+        self.driver.refresh()
+        return self
 
     def goto_checkout(self):
         """
@@ -54,4 +56,4 @@ class CartPage(BasePage):
         """
         continue_button = self.driver.find_element(*CartPageLocators.CONTINUE_BUTTON)
         continue_button.click()
-        return self.driver
+        return self
