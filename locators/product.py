@@ -2,7 +2,7 @@
 TODO
 """
 from selenium.webdriver.common.by import By
-from locators.base import BasePageLocators
+from .base import BasePageLocators
 
 
 # pylint: disable=too-few-public-methods

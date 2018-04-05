@@ -54,6 +54,6 @@ class CartPage(BasePage):
         """
         TODO
         """
-        continue_button = self.driver.find_element(*CartPageLocators.CONTINUE_BUTTON)
+        continue_button = self.driver.find_element(*CartPageLocators.BTN_CONTINUE)
         continue_button.click()
         return self
