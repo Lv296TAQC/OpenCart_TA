@@ -20,7 +20,7 @@ class ProductPage(BasePage):
         self.driver.implicitly_wait(5)
         return self
 
-    def go_to_cart(self):
+    def goto_cart(self):
         """
         TODO
         """
