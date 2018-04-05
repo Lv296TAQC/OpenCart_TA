@@ -7,6 +7,7 @@ from .base import BasePage
 from .cart import CartPage
 
 
+# pylint: disable=too-few-public-methods
 class ProductPage(BasePage):
     """
     Product Page methods come here.
