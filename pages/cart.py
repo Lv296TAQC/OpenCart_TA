@@ -1,5 +1,5 @@
 """
-TODO
+Cart Page comes here.
 """
 # pylint: disable=cyclic-import
 from locators.cart import CartPageLocators
@@ -9,7 +9,7 @@ from pages.checkout import CheckoutPage
 
 class CartPage(BasePage):
     """
-    TODO
+    Cart Page comes here.
     """
 
     def edit_good_qty(self, qty):

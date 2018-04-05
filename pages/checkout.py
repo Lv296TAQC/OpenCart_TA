@@ -4,7 +4,7 @@ TODO
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from pages.base import BasePage
+from .base import BasePage
 from locators.checkout import CheckoutPageLocators
 
 

@@ -2,8 +2,8 @@
 TODO
 """
 from locators.product import ProductPageLocators
-from pages.base import BasePage
-from pages.cart import CartPage
+from .base import BasePage
+from .cart import CartPage
 
 
 class ProductPage(BasePage):

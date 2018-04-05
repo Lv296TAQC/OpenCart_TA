@@ -1,8 +1,8 @@
 """
 Login Page comes here.
 """
-from pages.account import AccountPage
-from pages.base import BasePage
+from .account import AccountPage
+from .base import BasePage
 from locators.login import LoginPageLocators
 
 

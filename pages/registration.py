@@ -7,7 +7,7 @@ from helpers.generators import (generate_random_email,
                                 get_random_name,
                                 get_random_digit,
                                 get_random_password)
-from pages.base import BasePage
+from .base import BasePage
 
 
 class RegistrationPage(BasePage):

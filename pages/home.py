@@ -6,9 +6,9 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from locators.base import BasePageLocators
 from locators.home import HomePageLocators
-from pages.cart import CartPage
-from pages.login import LoginPage
-from pages.products import ProductsPage
+from .cart import CartPage
+from .login import LoginPage
+from .products import ProductsPage
 from .base import BasePage
 
 
