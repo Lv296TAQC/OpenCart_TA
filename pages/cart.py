@@ -1,44 +1,42 @@
 """
-TODO
+Cart Page comes here.
 """
-from pages.base import BasePage
 from locators.cart import CartPageLocators
+from .base import BasePage
+from .checkout import CheckoutPage
 
 
 class CartPage(BasePage):
     """
-    TODO
+    Cart Page methods come here.
     """
 
-    def edit_good_qty(self):
+    def edit_good_qty(self, qty):
         """Make webdriver change qty of product in Cart"""
-        self.driver.find_element_by_xpath(
-            '//*[@id="content"]/form/div/table/tbody/tr/td[4]/div/input').clear()
-        self.driver.find_element_by_xpath(
-            '//*[@id="content"]/form/div/table/tbody/tr/td[4]/div/input').send_keys('2')
-        self.driver.find_element_by_xpath(
-            '//*[@id="content"]/form/div/table/tbody/tr/td[4]/div/span/button[1]').click()
+        edit_field = self.driver.find_element(*CartPageLocators.QTY_FIELD).clear()
+        edit_field.send_keys(qty)
+        self.driver.find_element(*CartPageLocators.UPDATE_BUTTON).click()
+        return self
 
     def delete_good_from_cart(self):
         """Make webdriver delete product from Cart."""
         self.driver.find_element_by_xpath(
             '//*[@id="content"]/form/div/table/tbody/tr/td[4]/div/span/button[2]').click()
 
-    def go_to_checkout(self):
+    def goto_checkout(self):
         """
         TODO
         """
         element = self.driver.find_element(*CartPageLocators.GO_CHECKOUT)
         element.click()
+        return CheckoutPage(self.driver)
 
     def is_on_cart_page(self):
         """
         TODO
         """
-        if self.driver.current_url == "http://127.0.0.1/opencart.com/index.php?route=checkout/cart":
-            print(True)
+        if self.driver.current_url == "https://demo.opencart.com/index.php?route=checkout/cart":
             return True
-        print(False)
         return False
 
     def is_cart_empty(self):
@@ -47,7 +45,6 @@ class CartPage(BasePage):
         """
         empty_cart_text = self.driver.find_element(*CartPageLocators.EMPTY_CART_TEXT)
         if empty_cart_text:
-            print("Yout cart is empty!")
             return True
         return False
 
@@ -57,3 +54,4 @@ class CartPage(BasePage):
         """
         continue_button = self.driver.find_element(*CartPageLocators.CONTINUE_BUTTON)
         continue_button.click()
+        return self.driver

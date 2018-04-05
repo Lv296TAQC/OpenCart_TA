@@ -1,28 +1,18 @@
 """
-In this module class BasePage constructor will take argument driver,
-which has to be returned by DriverFactory().create_web_driver(driver_name)
-method
+Base Page comes here.
 """
 
 from selenium import webdriver
 
 
+# pylint: disable=too-few-public-methods
 class BasePage:
-    """Base class to initialize the base page that will be called from all pages"""
+    """
+    Base class to initialize the base page that will be called from all pages
+    """
 
-    def __init__(self, driver=None, url='/'):
+    def __init__(self, driver=None):
         """
-        TODO
+        Initialization of base driver
         """
-        self.url = url
         self.driver = driver if driver else webdriver.Chrome()
-
-    def to_home(self):
-        """
-        TODO
-        """
-
-    def to_cart(self):
-        """
-        TODO
-        """
