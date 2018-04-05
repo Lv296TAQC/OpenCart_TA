@@ -3,6 +3,7 @@ TODO
 """
 from selenium import webdriver
 
+
 # pylint: disable=too-few-public-methods
 class BasePageElement:
     """Base element."""

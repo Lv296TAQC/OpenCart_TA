@@ -14,5 +14,7 @@ class CartPageLocators(BasePageLocators):
     EMPTY_CART_TEXT = (By.XPATH, '//*[@id="content"]/p')
     CONTINUE_BUTTON = (By.XPATH, '//*[@id="content"]/div/div/a')
     QTY_FIELD = (By.XPATH, '//*[@id="content"]/form/div/table/tbody/tr/td[4]/div/input')
-    UPDATE_BUTTON = (
+    BTN_UPDATE = (
         By.XPATH, '//*[@id="content"]/form/div/table/tbody/tr/td[4]/div/span/button[1]')
+    BTN_DELETE = (
+        By.XPATH, '//*[@id="content"]/form/div/table/tbody/tr/td[4]/div/span/button[2]')

@@ -6,6 +6,7 @@ from .base import BasePage
 from .cart import CartPage
 
 
+# pylint: disable=too-few-public-methods
 class ProductPage(BasePage):
     """
     Product Page methods come here.
@@ -15,8 +16,8 @@ class ProductPage(BasePage):
         """
         TODO
         """
-        element = self.driver.find_element(*ProductPageLocators.BTN_CART)
-        element.click()
+        self.driver.find_element(*ProductPageLocators.BTN_CART).click()
+        self.driver.implicitly_wait(5)
         return self
 
     def go_to_cart(self):
