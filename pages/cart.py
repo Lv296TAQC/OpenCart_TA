@@ -1,7 +1,10 @@
 """
 Cart Page comes here.
 """
+from urllib.parse import urlparse
+
 from locators.cart import CartPageLocators
+from locators.products import ProductsPageLocators
 from .base import BasePage
 from .checkout import CheckoutPage
 
@@ -37,7 +40,8 @@ class CartPage(BasePage):
         """
         TODO
         """
-        if self.driver.current_url == "https://demo.opencart.com/index.php?route=checkout/cart":
+        current_url_path = urlparse(self.driver.current_url).path
+        if current_url_path == "/opencart.com/index.php?route=checkout/cart":
             return True
         return False
 
@@ -50,10 +54,36 @@ class CartPage(BasePage):
             return True
         return False
 
+    def is_product_added(self, product_name):
+        """
+        TODO
+        """
+        if self.driver.find_element(*ProductsPageLocators.find_product_link(product_name)):
+            return True
+        return False
+
     def click_on_continue_button(self):
         """
         TODO
         """
-        continue_button = self.driver.find_element(*CartPageLocators.BTN_CONTINUE)
-        continue_button.click()
+        self.driver.find_element(*CartPageLocators.BTN_CONTINUE).click()
+        return self.driver
+
+    def edit_product_qty(self, qty):
+        """
+        TODO
+        """
+        field_edit = self.driver.find_elements(*CartPageLocators.FIELD_PRODUCT_QTY)
+        field_edit[1].clear()
+        field_edit[1].send_keys(qty)
+        btn_edit = self.driver.find_elements(*CartPageLocators.BTN_EDIT_QTY)
+        btn_edit[0].click()
+        return self
+
+    def delete_product_from_cart(self):
+        """
+        TODO
+        """
+        delete_buttons = self.driver.find_elements(*CartPageLocators.BTN_DELETE_PRODUCT)
+        delete_buttons[0].click()
         return self

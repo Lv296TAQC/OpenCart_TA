@@ -11,4 +11,11 @@ class ProductsPageLocators(BasePageLocators):
     TODO
     """
     MAC_PRODUCT_IMAGE = (By.XPATH, '//*[@id="content"]/div[2]/div/div/div[1]/a/img')
-    BTN_CART = (By.ID, 'button-cart')
+
+    @staticmethod
+    def find_product_link(product_name):
+        """
+        Wrapper for product name locator.
+        """
+        link = (By.XPATH, '//a[text()="{}"]'.format(product_name))
+        return link

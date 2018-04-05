@@ -1,6 +1,10 @@
 """
 Home Page comes here.
 """
+from urllib.parse import urlparse
+
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.wait import WebDriverWait
 
 from locators.base import BasePageLocators
 from .cart import CartPage
@@ -27,7 +31,8 @@ class HomePage(BasePage):
         """
         Make sure we on Home Page.
         """
-        if self.driver.current_url == "https://demo.opencart.com/":
+        current_url_path = urlparse(self.driver.current_url).path
+        if current_url_path == "/opencart.com/":
             return True
         return False
 
@@ -44,6 +49,18 @@ class HomePage(BasePage):
         """
         self.driver.find_element(*BasePageLocators.COMPONENTS).click()
         return self
+
+    def click_nav_components_monitors(self):
+        """
+        Click Component Tab.
+        Click Monitors.
+        """
+        self.click_nav_components()
+        monitors = self.driver.find_element(*BasePageLocators.MONITORS)
+        wait = WebDriverWait(self.driver, 10)
+        wait.until(expected_conditions.element_to_be_clickable(BasePageLocators.MONITORS))
+        monitors.click()
+        return ProductsPage(self.driver)
 
     def click_nav_phones(self):
         """
@@ -149,15 +166,6 @@ class HomePage(BasePage):
         """
         self.click_nav_components()
         self.driver.find_element(*BasePageLocators.MICE).click()
-        return ProductsPage(self.driver)
-
-    def click_nav_components_monitors(self):
-        """
-        Click Components Tab.
-        Click Monitors .
-        """
-        self.click_nav_components()
-        self.driver.find_element(*BasePageLocators.MONITORS).click()
         return ProductsPage(self.driver)
 
     def click_nav_components_printers(self):
