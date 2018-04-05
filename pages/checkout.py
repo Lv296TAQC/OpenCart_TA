@@ -1,16 +1,16 @@
 """
-TODO
+Checkout Page comes here.
 """
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from .base import BasePage
 from locators.checkout import CheckoutPageLocators
+from .base import BasePage
 
 
 class CheckoutPage(BasePage):
     """
-    TODO
+    Checkout Page methods come here.
     """
 
     def checkout_options(self):

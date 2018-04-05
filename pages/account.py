@@ -9,6 +9,7 @@ class AccountPage(BasePage):
     """
     Account Page methods come here.
     """
+
     def open_address_book_page(self):
         """
         TODO
@@ -24,5 +25,8 @@ class AccountPage(BasePage):
         return self
 
     def goto_homepage(self):
+        """
+        TODO
+        """
         self.driver.find_element(*AccountLocators.YOUR_STORE_LINK).click()
         return self

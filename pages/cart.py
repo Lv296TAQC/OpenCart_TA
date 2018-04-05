@@ -1,15 +1,14 @@
 """
 Cart Page comes here.
 """
-# pylint: disable=cyclic-import
 from locators.cart import CartPageLocators
-from pages.base import BasePage
-from pages.checkout import CheckoutPage
+from .base import BasePage
+from .checkout import CheckoutPage
 
 
 class CartPage(BasePage):
     """
-    Cart Page comes here.
+    Cart Page methods come here.
     """
 
     def edit_good_qty(self, qty):
@@ -17,13 +16,14 @@ class CartPage(BasePage):
         edit_field = self.driver.find_element(*CartPageLocators.QTY_FIELD)
         edit_field.clear()
         edit_field.send_keys(qty)
-        self.driver.find_element(*CartPageLocators.UPDATE_BUTTON).click()
+        self.driver.find_element(*CartPageLocators.BTN_UPDATE).click()
         return self
 
     def delete_good_from_cart(self):
         """Make webdriver delete product from Cart."""
-        self.driver.find_element_by_xpath(
-            '//*[@id="content"]/form/div/table/tbody/tr/td[4]/div/span/button[2]').click()
+        self.driver.find_element(*CartPageLocators.BTN_DELETE).click()
+        self.driver.refresh()
+        return self
 
     def goto_checkout(self):
         """

@@ -1,5 +1,5 @@
 """
-TODO
+Register Page comes here.
 """
 from selenium.webdriver.common.keys import Keys
 
@@ -10,10 +10,11 @@ from helpers.generators import (generate_random_email,
 from .base import BasePage
 
 
-class RegistrationPage(BasePage):
+class RegisterPage(BasePage):
     """
-    TODO
+    Register Page methods come here.
     """
+
     last_created_password = None
     last_created_email = None
 
