@@ -24,6 +24,5 @@ class ProductPage(BasePage):
         """
         TODO
         """
-        element = self.driver.find_element(*ProductPageLocators.GO_CART)
-        element.click()
+        self.driver.find_element(*ProductPageLocators.GO_CART).click()
         return CartPage(self.driver)

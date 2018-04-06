@@ -18,3 +18,7 @@ class CartPageLocators(BasePageLocators):
         By.XPATH, '//*[@id="content"]/form/div/table/tbody/tr/td[4]/div/span/button[1]')
     BTN_DELETE = (
         By.XPATH, '//*[@id="content"]/form/div/table/tbody/tr/td[4]/div/span/button[2]')
+
+    BTN_DELETE_PRODUCT = (By.CLASS_NAME, 'btn btn-danger')
+    BTN_EDIT_QTY = (By.CLASS_NAME, 'btn-primary')
+    FIELD_PRODUCT_QTY = (By.CLASS_NAME, 'form-control')
