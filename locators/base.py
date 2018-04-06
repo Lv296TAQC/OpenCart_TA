@@ -1,5 +1,5 @@
 """
-TODO
+All common locators for all Pages are placed here
 """
 from selenium.webdriver.common.by import By
 
@@ -7,7 +7,7 @@ from selenium.webdriver.common.by import By
 # pylint: disable=too-few-public-methods
 class BasePageLocators:
     """
-    TODO
+    All common locators for all Pages are placed here
     """
     GO_CART = (By.XPATH, '//*[@id="top-links"]/ul/li[4]/a/i')
     MY_ACCOUNT_DROPDOWN = (By.XPATH, '//*[@id="top-links"]/ul/li[2]/a')

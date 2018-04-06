@@ -1,5 +1,5 @@
 """
-TODO
+Locators for Search Page are placed here
 """
 from selenium.webdriver.common.by import By
 from .base import BasePageLocators
@@ -8,7 +8,7 @@ from .base import BasePageLocators
 # pylint: disable=too-few-public-methods
 class SearchPageLocators(BasePageLocators):
     """
-    TODO
+    Locators for Search Page are placed here
     """
     SEARCH_FIELD = (By.NAME, 'search')
     SEARCH_BUTTON = (By.CLASS_NAME, 'btn btn-default btn-lg')

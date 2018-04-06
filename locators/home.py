@@ -1,5 +1,5 @@
 """
-TODO
+Locators for Home Page are placed here
 """
 from .base import BasePageLocators
 
@@ -7,5 +7,5 @@ from .base import BasePageLocators
 # pylint: disable=too-few-public-methods
 class HomePageLocators(BasePageLocators):
     """
-    TODO
+    Locators for Home Page are placed here
     """

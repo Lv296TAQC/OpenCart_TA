@@ -1,5 +1,5 @@
 """
-TODO
+Locators for Account Page are placed here
 """
 from selenium.webdriver.common.by import By
 from .base import BasePageLocators
@@ -8,7 +8,7 @@ from .base import BasePageLocators
 # pylint: disable=too-few-public-methods
 class AccountLocators(BasePageLocators):
     """
-    TODO
+    Locators for Account Page are placed here
     """
     ADDRESS_BOOK_LINK = (By.LINK_TEXT, "Address Book")
     EDIT_ACCOUNT_LINK = (By.XPATH, "//div[@id='content']//a[.='Edit Account']")
