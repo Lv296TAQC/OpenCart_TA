@@ -3,6 +3,8 @@ All common locators for all Pages are placed here
 """
 from selenium.webdriver.common.by import By
 
+from helpers.settings import BASE_HOST
+
 
 # pylint: disable=too-few-public-methods
 class BasePageLocators:
@@ -41,3 +43,6 @@ class BasePageLocators:
     LIST_COMPONENS = (By.XPATH, '//*[@id="menu"]/div[2]/ul/li[3]/div/div/ul/li/a')
     LOGOUT = (By.XPATH, "//ul[@class='list-inline']//a[.='Logout']")
     PC = (By.XPATH, '//a[contains(text(),"PC")]')
+
+    # FOOTER
+    RETURNS = (By.CSS_SELECTOR, f'a[href="{BASE_HOST}/index.php?route=account/return/add"]')
