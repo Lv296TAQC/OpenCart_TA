@@ -14,16 +14,28 @@ class CartPage(BasePage):
     Cart Page methods come here.
     """
 
-    def edit_good_qty(self, qty):
-        """Make webdriver change qty of product in Cart"""
+    def edit_good_qty(self, qty: int) -> object:
+        """
+        Make webdriver change qty of first product in Cart.
+
+        :param qty: Quantity of product, that you want to get after update.
+        :return: Cart Page Object with changed qty of first product in Cart.
+        """
+        self.logger.info('editing first product quantity in Cart')
         edit_field = self.driver.find_element(*CartPageLocators.QTY_FIELD)
         edit_field.clear()
         edit_field.send_keys(qty)
         self.driver.find_element(*CartPageLocators.BTN_UPDATE).click()
         return self
 
-    def delete_good_from_cart(self):
-        """Make webdriver delete product from Cart."""
+    def delete_good_from_cart(self) -> object:
+        """
+        Make webdriver delete first product from Cart.
+        Refresh browser page for make shore changes will appear.
+
+        :return: Cart Page Object with deleted first product in Cart.
+        """
+        self.logger.info('deleting first product from Cart')
         self.driver.find_element(*CartPageLocators.BTN_DELETE).click()
         self.driver.refresh()
         return self

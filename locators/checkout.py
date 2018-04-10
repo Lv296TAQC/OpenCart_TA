@@ -1,5 +1,5 @@
 """
-Checkout Page locators come here
+Locators for Checkout Page are placed here
 """
 from selenium.webdriver.common.by import By
 from .base import BasePageLocators
@@ -8,7 +8,7 @@ from .base import BasePageLocators
 # pylint: disable=too-few-public-methods
 class CheckoutPageLocators(BasePageLocators):
     """
-    It contents constants
+    Locators for Checkout Page are placed here
     """
     ACCORDION = (By.ID, 'accrodion')
 

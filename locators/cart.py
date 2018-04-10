@@ -1,5 +1,5 @@
 """
-TODO
+Locators for Cart Page are placed here
 """
 from selenium.webdriver.common.by import By
 from .base import BasePageLocators
@@ -8,7 +8,7 @@ from .base import BasePageLocators
 # pylint: disable=too-few-public-methods
 class CartPageLocators(BasePageLocators):
     """
-    TODO
+    Locators for Cart Page are placed here
     """
     GO_CHECKOUT = (By.XPATH, '//*[@id="content"]/div[3]/div[2]/a')
     EMPTY_CART_TEXT = (By.XPATH, '//*[@id="content"]/p')
