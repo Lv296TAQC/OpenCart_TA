@@ -35,6 +35,19 @@ class GreyCartBtn:
         """
         self.driver = driver
 
+    def is_cart_btn_empty(self) -> bool:
+        """
+        Check whether the cartbutton is empty.
+
+        :return: True if it`s empty, False if not
+        """
+        empty_cart_btn_text = self.driver.find_element(*BasePageLocators.EMPTY_CART_BUTTON_TEXT)
+        if empty_cart_btn_text:
+            logging.info("Your cart button is empty!")
+            return True
+        logging.error("Something went wrong!")
+        return False
+
     def click_btn_grey_cart(self) -> "GreyCartBtn":
         """
         Make webdriver click grey Cart button.

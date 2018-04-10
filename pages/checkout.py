@@ -1,7 +1,6 @@
 """
 Checkout Page comes here.
 """
-
 from faker import Faker
 
 from elements.accordion.guest.billingdetails import BillingDetailsGuest
