@@ -26,6 +26,8 @@ class CartPageLocators(BasePageLocators):
         By.XPATH, '//div[contains(text(),"You have modified your shopping cart!")]')
     TOTAL_SUM = (By.XPATH, '//*[@id="content"]/form/div/table/tbody/tr/td[6]')
     ALERT_TOO_MUCH_PRODUCT = (By.XPATH, '//*[@id="checkout-cart"]/div[2]')
+    PRODUCT_ROW = (By.XPATH, "//button[2]")
+    QTY_FIELD = (By.TAG_NAME, "input")
 
     @staticmethod
     def product_number(number: int) -> tuple:
@@ -59,3 +61,14 @@ class CartPageLocators(BasePageLocators):
         """
         delete = (By.XPATH, '//a[text()="{}"]'.format(delete_model))
         return delete
+
+    @staticmethod
+    def find_product_link(product_name: str) -> tuple:
+        """
+        Wrapper for product name locator on the Cart page.
+
+        :param product_name: Name of product need to be added
+        :return: WebElement locator
+        """
+        link = (By.XPATH, '//td[2]/a[text()="{}"]'.format(product_name))
+        return link
