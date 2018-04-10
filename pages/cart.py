@@ -1,7 +1,10 @@
 """
 Cart Page comes here.
 """
+import logging
+
 from urllib.parse import urlparse
+from selenium.webdriver.common.keys import Keys
 
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
@@ -24,22 +27,55 @@ class CartPage(BasePage):
         :param qty: Quantity of product, that you want to get after update.
         :return: Cart Page Object with changed qty of first product in Cart.
         """
-        self.logger.info('editing first product quantity in Cart')
+        logging.info('editing first product quantity in Cart')
         edit_field = self.driver.find_element(*CartPageLocators.QTY_FIELD)
         edit_field.clear()
         edit_field.send_keys(qty)
         self.driver.find_element(*CartPageLocators.BTN_UPDATE).click()
         return self
 
-    def delete_good_from_cart(self) -> object:
+    def delete_good_from_cart(self) -> "CartPage":
         """
         Make webdriver delete first product from Cart.
         Refresh browser page for make shore changes will appear.
 
         :return: Cart Page Object with deleted first product in Cart.
         """
-        self.logger.info('deleting first product from Cart')
+        logging.info('deleting first product from Cart')
         self.driver.find_element(*CartPageLocators.BTN_DELETE).click()
+        self.driver.refresh()
+        return self
+
+    def edit_product_qty_by_model(self, edit_model: str, qty: int) -> "CartPage":
+        """
+        Make webdriver edit quantity of certain product to Cart
+
+        :param edit_model: Model of product, which quantity we want to edit.
+        :param qty: Quantity of product, that you want to get after update.
+        :return: Cart Page Object with edited certain product quantity.
+        """
+        logging.info('editing quantity of certain product in Cart by model')
+        if edit_model == "Product 11":
+            edit_model = edit_model.lower()
+        edit_field = self.driver.find_element(
+            *CartPageLocators.find_product_edit_field(edit_model))
+        edit_field.clear()
+        edit_field.send_keys(qty)
+        edit_field.send_keys(Keys.ENTER)
+        return self
+
+    def delete_product_by_model(self, delete_model: str) -> "CartPage":
+        """
+        Make webdriver delete certain product from Cart
+
+        :param delete_model: Model of product, which we want to delete from cart.
+        :return: Cart Page Object with deleted certain product from cart.
+        """
+        logging.info('editing quantity of certain product in Cart by model')
+        if delete_model == "Product 11":
+            delete_model = delete_model.lower()
+        self.driver.find_element(
+            *CartPageLocators.find_product_delete_field(delete_model)).click()
         self.driver.refresh()
         return self
 
