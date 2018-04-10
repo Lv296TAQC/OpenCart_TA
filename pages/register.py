@@ -1,6 +1,7 @@
 """
 Register Page comes here.
 """
+# pylint: disable=duplicate-code
 from selenium.webdriver.common.keys import Keys
 
 from helpers.generators import (generate_random_email,

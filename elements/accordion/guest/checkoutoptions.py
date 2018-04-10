@@ -8,7 +8,7 @@ from locators.checkout import CheckoutPageLocators
 
 
 # pylint: disable=too-few-public-methods
-class CheckoutOptions(BasePageElement):
+class CheckoutOptionsGuest(BasePageElement):
     """
     This class describes checkout options steps of the purchase
     """

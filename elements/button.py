@@ -17,8 +17,8 @@ class Button(BasePageElement):
         """
         Add locator property
 
-        :param driver: state of driver
-        :param locator: tuple contains attribute available for By class and the same locator
+       :param driver: state of driver
+       :param locator: tuple contains attribute available for By class and the same locator
         """
         super().__init__(driver)
         self.locator = locator
