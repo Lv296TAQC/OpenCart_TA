@@ -1,6 +1,9 @@
 """
 Product Page comes here.
 """
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
+
 from locators.product import ProductPageLocators
 from .base import BasePage
 from .cart import CartPage
@@ -30,5 +33,8 @@ class ProductPage(BasePage):
         :return: Cart Page Object.
         """
         self.logger.info('clicking Cart Link in top Bar')
+        WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable(ProductPageLocators.GO_CART)
+        )
         self.driver.find_element(*ProductPageLocators.GO_CART).click()
         return CartPage(self.driver)

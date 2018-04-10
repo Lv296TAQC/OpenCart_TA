@@ -3,6 +3,9 @@ Cart Page comes here.
 """
 from urllib.parse import urlparse
 
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
+
 from locators.cart import CartPageLocators
 from locators.products import ProductsPageLocators
 from .base import BasePage
@@ -44,6 +47,9 @@ class CartPage(BasePage):
         """
         TODO
         """
+        WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located(CartPageLocators.GO_CHECKOUT)
+        )
         element = self.driver.find_element(*CartPageLocators.GO_CHECKOUT)
         element.click()
         return CheckoutPage(self.driver)

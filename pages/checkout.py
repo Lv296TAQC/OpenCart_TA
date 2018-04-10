@@ -4,9 +4,10 @@ Checkout Page comes here.
 
 from faker import Faker
 
-from elements.accordion.checkoutoptions import CheckoutOptions
 from elements.accordion.billingdetails import BillingDetails
-from .base import BasePage
+from elements.accordion.checkoutoptions import CheckoutOptions
+from elements.accordion.deliverydetails import DeliveryDetails
+from pages.base import BasePage
 
 # pylint: disable=invalid-name
 fake = Faker()
@@ -27,6 +28,23 @@ class CheckoutPage(BasePage):
         self.accordion.guest_account.click()
         self.accordion.btn_account.click()
         return self
+
+    def checkout_options_users(self):
+        """
+        Fill checkout options for registered user
+        """
+        self.accordion = CheckoutOptions(self.driver)
+        self.accordion.email_field.send_keys('Nick123@gmail.com')
+        self.accordion.pass_field.send_keys('123123123')
+        self.accordion.btn_login.click()
+        return self
+
+    def choose_new_address(self):
+        """
+        Choose new address radio button
+        """
+        self.accordion = BillingDetails(self.driver)
+        self.accordion.btn_new_address.click()
 
     def add_billing_details(self):
         """
@@ -56,8 +74,21 @@ class CheckoutPage(BasePage):
 
     def add_payment_method(self):
         """
-        TODO
+        Fill shipping details
         """
+        self.accordion = DeliveryDetails(self.driver)
+        self.accordion.firstname.send_keys(fake.first_name())
+        self.accordion.lastname.send_keys(fake.last_name())
+
+        self.accordion.company.send_keys(fake.name())
+        self.accordion.address_1.send_keys(fake.name())
+        self.accordion.address_2.send_keys(fake.name())
+        self.accordion.city.send_keys(fake.name())
+        self.accordion.post_code.send_keys(fake.name())
+        self.accordion.country.send_keys(fake.name())
+        self.accordion.country.send_keys(fake.name())
+        self.accordion.region_or_state.send_keys(fake.name())
+        return self
 
     def confirm_order(self):
         """
