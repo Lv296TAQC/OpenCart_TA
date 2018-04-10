@@ -22,7 +22,7 @@ def test_add_iphone_to_cart():
             .click_nav_phones()
             .goto_product_page(product)
             .add_to_cart()
-            .go_to_cart()
+            .goto_cart()
             .is_product_added(product))
 
 
@@ -30,7 +30,7 @@ def test_delete_from_cart():
     (HomePage(driver).
      click_nav_phones().
      goto_product_page(product).
-     add_to_cart().go_to_cart().
+     add_to_cart().goto_cart().
      delete_good_from_cart())
     assert CartPage(driver).is_cart_empty()
 
@@ -40,5 +40,5 @@ def test_edit_product_qty():
             .click_nav_phones()
             .goto_product_page(product)
             .add_to_cart()
-            .go_to_cart()
+            .goto_cart()
             .edit_product_qty(2))

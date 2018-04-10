@@ -1,5 +1,5 @@
 """
-TODO
+Locators for Products Page are placed here
 """
 from selenium.webdriver.common.by import By
 from .base import BasePageLocators
@@ -8,7 +8,7 @@ from .base import BasePageLocators
 # pylint: disable=too-few-public-methods
 class ProductsPageLocators(BasePageLocators):
     """
-    TODO
+    Locators for Products Page are placed here
     """
     MAC_PRODUCT_IMAGE = (By.XPATH, '//*[@id="content"]/div[2]/div/div/div[1]/a/img')
 
