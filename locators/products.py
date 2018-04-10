@@ -21,5 +21,5 @@ class ProductsPageLocators(BasePageLocators):
         :param product_name: Name of product need to be added
         :return: WebElement locator
         """
-        link = (By.XPATH, '//a[text()="{}"]'.format(product_name))
+        link = (By.XPATH, '//h4/a[text()="{}"]'.format(product_name))
         return link

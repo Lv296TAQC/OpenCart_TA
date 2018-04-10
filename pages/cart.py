@@ -7,11 +7,9 @@ from urllib.parse import urlparse
 
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
 from locators.cart import CartPageLocators
-from locators.products import ProductsPageLocators
 from .base import BasePage
 from .checkout import CheckoutPage
 
@@ -128,7 +126,7 @@ class CartPage(BasePage):
         :param product_name: Name of added product
         :return: True if product was added, False if not
         """
-        if self.driver.find_element(*ProductsPageLocators.find_product_link(product_name)):
+        if self.driver.find_element(*CartPageLocators.find_product_link(product_name)):
             logging.info("You have added {} to your cart!".format(product_name))
             return True
         logging.error("Something went wrong!")
@@ -141,7 +139,7 @@ class CartPage(BasePage):
         :return: instance driver
         """
         self.driver.find_element(*CartPageLocators.BTN_CONTINUE).click()
-        logging.info("Clicked on the continue button!")
+        logging.info("Clicked on continue button!")
         return self.driver
 
     def _product_number(self, number: int):
@@ -159,10 +157,11 @@ class CartPage(BasePage):
         :return: Cart Page Object with changed qty of added product
         """
         self._product_number(1)
-        input_field = self.row.find_element(By.TAG_NAME, "input")
+        input_field = self.row.find_element(*CartPageLocators.QTY_FIELD)
         input_field.clear()
         input_field.send_keys(quantity)
         input_field.send_keys(Keys.ENTER)
+        logging.info("You have edited product quantity")
         return self
 
     def click_on_delete_btn(self) -> "Cart Page":
@@ -172,7 +171,8 @@ class CartPage(BasePage):
         :return: Cart Page Object with deleted product from Cart.
         """
         self._product_number(1)
-        self.row.find_element(By.XPATH, "//button[2]").click()
+        self.row.find_element(*CartPageLocators.PRODUCT_ROW).click()
+        logging.info("You have deleted product from cart")
         return self
 
     def is_cart_modified(self) -> bool:
