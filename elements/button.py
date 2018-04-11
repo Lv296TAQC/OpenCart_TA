@@ -1,6 +1,9 @@
 """
 Class Button comes here.
 """
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+
 from elements.base import BasePageElement
 
 
@@ -24,4 +27,6 @@ class Button(BasePageElement):
         """
         Click on the button defined by the locator
         """
+        WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable(self.locator))
         self.driver.find_element(*self.locator).click()
