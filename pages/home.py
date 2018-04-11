@@ -1,6 +1,7 @@
 """
 Home Page comes here.
 """
+import logging
 from urllib.parse import urlparse
 
 from selenium.webdriver.support import expected_conditions
@@ -73,13 +74,13 @@ class HomePage(BasePage):
 
         return ProductsPage(self.driver)
 
-    def click_nav_desktops(self) -> object:
+    def click_nav_desktops(self) -> "HomePage":
         """
         Click Desktops Tab.
 
         :return: Home Page with clicked Desktops Navigation Bar.
         """
-        self.logger.info('clicking top Navigation Desktops Bar')
+        logging.info('clicking top Navigation Desktops Bar')
         self.driver.find_element(*BasePageLocators.DESKTOPS).click()
         return self
 
@@ -125,14 +126,14 @@ class HomePage(BasePage):
         self.driver.find_element(*BasePageLocators.PC).click()
         return ProductsPage(self.driver)
 
-    def click_nav_desktops_mac(self) -> object:
+    def click_nav_desktops_mac(self) -> "ProductsPage":
         """
         Click Desktops Tab.
         Click Mac.
 
         :return: Products MAC Page Object
         """
-        self.logger.info('clicking top navigation for getting to the Desktops->MAC Products Page')
+        logging.info('clicking top navigation for getting to the Desktops->MAC Products Page')
         self.click_nav_desktops()
         self.driver.find_element(*BasePageLocators.MAC).click()
         return ProductsPage(self.driver)

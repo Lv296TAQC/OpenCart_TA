@@ -22,3 +22,25 @@ class CartPageLocators(BasePageLocators):
     BTN_DELETE_PRODUCT = (By.CLASS_NAME, 'btn btn-danger')
     BTN_EDIT_QTY = (By.CLASS_NAME, 'btn-primary')
     FIELD_PRODUCT_QTY = (By.CLASS_NAME, 'form-control')
+
+    @staticmethod
+    def find_product_edit_field(edit_model: str) -> tuple:
+        """
+        Wrapper for product edit field locator.
+
+        :param edit_model: Model of product, which quantity we want to edit.
+        :return: Tuple for finding product's edit field
+        """
+        field = (By.XPATH, '//a[text()="{}"]'.format(edit_model))
+        return field
+
+    @staticmethod
+    def find_product_delete_field(delete_model: str) -> tuple:
+        """
+        Wrapper for product delete field locator.
+
+        :param delete_model: Model of product, which we want to delete from Cart.
+        :return: Tuple for finding product's delete button
+        """
+        delete = (By.XPATH, '//a[text()="{}"]'.format(delete_model))
+        return delete

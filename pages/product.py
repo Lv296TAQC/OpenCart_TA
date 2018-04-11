@@ -1,6 +1,8 @@
 """
 Product Page comes here.
 """
+import logging
+
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -15,13 +17,13 @@ class ProductPage(BasePage):
     Product Page methods come here.
     """
 
-    def add_to_cart(self) -> object:
+    def add_to_cart(self) -> "ProductPage":
         """
         Make webdriver add product to Cart.
 
         :return: Product Page Object with added product into Cart.
         """
-        self.logger.info('adding product to the Cart')
+        logging.info('adding product to the Cart')
         self.driver.find_element(*ProductPageLocators.BTN_CART).click()
         self.driver.implicitly_wait(5)
         return self
@@ -32,7 +34,7 @@ class ProductPage(BasePage):
 
         :return: Cart Page Object.
         """
-        self.logger.info('clicking Cart Link in top Bar')
+        logging.info('clicking Cart Link in top Bar')
         WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable(ProductPageLocators.GO_CART)
         )
