@@ -22,6 +22,7 @@ class CartPageLocators(BasePageLocators):
     BTN_DELETE_PRODUCT = (By.CLASS_NAME, 'btn btn-danger')
     BTN_EDIT_QTY = (By.CLASS_NAME, 'btn-primary')
     FIELD_PRODUCT_QTY = (By.CLASS_NAME, 'form-control')
+    ALERT_TOO_MUCH_PRODUCT = (By.XPATH, '//*[@id="checkout-cart"]/div[2]')
 
     @staticmethod
     def find_product_edit_field(edit_model: str) -> tuple:

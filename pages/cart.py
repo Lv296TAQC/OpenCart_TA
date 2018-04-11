@@ -2,8 +2,8 @@
 Cart Page comes here.
 """
 import logging
-from urllib.parse import urlparse
 
+from urllib.parse import urlparse
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
