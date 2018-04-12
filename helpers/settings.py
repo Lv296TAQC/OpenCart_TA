@@ -4,7 +4,11 @@ Module contains setings.
 import logging
 
 BASE_HOST = "http://localhost/opencart"
-PRODUCT = "iPhone"
+PHONES = {
+    "IPHONE": "iPhone",
+    "HTC": "HTC Touch HD",
+    "PALM": "Palm Treo Pro"
+}
 BASE_USER_EMAIL = "taqc296@gmail.com"
 BASE_USER_PASSWORD = "root"
 BASE_CONNECTION = "mysql://root@localhost/opencart"

@@ -26,6 +26,7 @@ class BasePageLocators:
     BTN_GREY_CARD_AMOUNT = (By.ID, "cart-total")
     LINK_VIEW_CART = (By.XPATH, '//*[@id="cart"]/ul/li[2]/div/p/a[1]')
     LINK_CHECKOUT = (By.XPATH, '//*[@id="cart"]/ul/li[2]/div/p/a[2]')
+    BTN_DELETE = (By.XPATH, '//*[@id="cart"]/ul/li[1]/table/tbody/tr[1]/td[5]/button')
     COMPONENTS = (By.XPATH, '//a[text()="Components"]')
     MONITORS = (By.XPATH, '//a[contains(text(),"Monitors")]')
     MAC = (By.XPATH, '//a[contains(text(),"Mac")]')

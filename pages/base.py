@@ -20,7 +20,7 @@ class BasePage:
         :param driver: Receives driver with default value None.
         """
         self.driver = driver if driver else webdriver.Chrome()
-        self.grey_cart_btn = GreyCartBtn(driver)
+        self.grey_cart_btn = GreyCartBtn(self.driver)
 
 
 class GreyCartBtn:
@@ -76,4 +76,14 @@ class GreyCartBtn:
         """
         logging.info('clicking Checkout link')
         self.driver.find_element(*BasePageLocators.LINK_CHECKOUT).click()
+        return self
+
+    def click_delete_btn(self) -> "GreyCartBtn":
+        """
+        Make webdriver click Checkout Link in grey Cart button.
+
+        :return: Home Page Object with deleted firts item from cart.
+        """
+        self.driver.find_element(*BasePageLocators.BTN_DELETE).click()
+        logging.info('clicking delete btn')
         return self

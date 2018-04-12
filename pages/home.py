@@ -49,7 +49,6 @@ class HomePage(BasePage):
 
         :return: CartPage object
         """
-        time.sleep(2)
         self.driver.find_element(*BasePageLocators.GO_CART).click()
         logging.info("Clicked on the Shopping Cart tab")
         return CartPage(self.driver)
@@ -93,7 +92,7 @@ class HomePage(BasePage):
         :return: ProductsPage object
         """
         self.driver.find_element(*BasePageLocators.PHONES).click()
-        logging.info('clicking top Navigation Desktops Bar')
+        logging.info('Clicked on the Phones tab')
         return ProductsPage(self.driver)
 
     def click_nav_desktops(self) -> "HomePage":
