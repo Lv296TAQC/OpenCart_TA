@@ -84,6 +84,7 @@ class HomePage(BasePage):
         """
         logging.info('clicking top Navigation Desktops Bar')
         self.driver.find_element(*BasePageLocators.DESKTOPS).click()
+        time.sleep(1)
         return self
 
     def click_nav_laptops(self) -> "HomePage":
@@ -137,7 +138,9 @@ class HomePage(BasePage):
         """
         logging.info('clicking top navigation for getting to the Desktops->MAC Products Page')
         self.click_nav_desktops()
+        time.sleep(3)
         self.driver.find_element(*BasePageLocators.MAC).click()
+        time.sleep(2)
         return ProductsPage(self.driver)
 
     def click_nav_desktops_show_all(self) -> ProductsPage:

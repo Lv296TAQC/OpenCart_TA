@@ -14,3 +14,10 @@ logging.basicConfig(filename="sample.log",
                             '%(filename)-20s [LINE:%(lineno)s]   %(message)s'),
                     datefmt='%m/%d/%Y %I:%M:%S %p',
                     level=logging.INFO)
+
+# pylint: disable=wildcard-import
+# pylint: disable=unused-wildcard-import
+try:
+    from .local_settings import *
+except ImportError:
+    pass
