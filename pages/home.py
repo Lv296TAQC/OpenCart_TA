@@ -12,6 +12,7 @@ from locators.base import BasePageLocators
 from .cart import CartPage
 from .login import LoginPage
 from .products import ProductsPage
+from .returns import ReturnsPage
 from .base import BasePage
 
 
@@ -52,6 +53,14 @@ class HomePage(BasePage):
         self.driver.find_element(*BasePageLocators.GO_CART).click()
         logging.info("Clicked on the Shopping Cart tab")
         return CartPage(self.driver)
+
+    def goto_returns(self) -> "ReturnsPage":
+        """
+        Go to Returns Page.
+        :return: object of ReturnsPage class
+        """
+        self.driver.find_element(*BasePageLocators.RETURNS).click()
+        return ReturnsPage(self.driver)
 
     def click_nav_components(self) -> "HomePage":
         """
