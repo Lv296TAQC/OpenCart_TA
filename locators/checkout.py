@@ -47,12 +47,18 @@ class CheckoutPageLocators(BasePageLocators):
     COUNTRY_SHIPPING = (By.ID, 'input-shipping-country')
     REGION_OR_STATE_SHIPPING = (By.ID, 'input-shipping-zone')
 
-    RADIO_NEW_ADDRESS_BILLING = (By.NAME, 'payment_address')
+    RADIO_NEW_ADDRESS_BILLING = (By.XPATH,
+                                 '//*[@id="collapse-payment-address"]/div/form/div[3]/label/input')
     RADIO_ADDRESS_DELIVERY = (By.XPATH,
                               '//*[@id="collapse-shipping-address"]/div/form/div[3]/label/input')
+
+    # DELIVERY METHOD
+    DELIVERY_COMMENT = (By.XPATH, '//*[@id="collapse-payment-method"]/div/p[3]/textarea')
+
     # PAYMENT METHOD
     AGREE_TERMS_AND_CONDITIONS = (By.XPATH,
                                   '//*[@id="collapse-payment-method"]/div/div[2]/div/input[1]')
+    PAYMENT_COMMENT = (By.XPATH, '//*[@id="collapse-shipping-method"]/div/p[4]/textarea')
 
     # CONTINUE BUTTONS
     BTN_CONTINUE_S_2 = (By.ID, 'button-payment-address')

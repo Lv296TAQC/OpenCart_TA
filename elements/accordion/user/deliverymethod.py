@@ -11,15 +11,15 @@ from locators.checkout import CheckoutPageLocators
 
 # pylint: disable=too-many-instance-attributes
 # pylint: disable=too-few-public-methods
-class PaymentMethodGuest(BasePageElement):
+class DeliveryMethodUser(BasePageElement):
     """
-    This class describes delivery details steps of the purchase
+    This class describes delivery method steps of the purchase
     """
+
     def __init__(self, driver):
         super().__init__(driver)
 
-        WebDriverWait(self.driver, 30).until(
-            EC.element_to_be_clickable(CheckoutPageLocators.AGREE_TERMS_AND_CONDITIONS))
-
-        self.agree = self.driver.find_element(*CheckoutPageLocators.AGREE_TERMS_AND_CONDITIONS)
-        self.btn = Button(self.driver, CheckoutPageLocators.BTN_CONTINUE_S_5)
+        WebDriverWait(self.driver, 10).until(
+            EC.visibility_of_element_located(CheckoutPageLocators.BTN_CONTINUE_S_4)
+        )
+        self.btn_s_4 = Button(self.driver, CheckoutPageLocators.BTN_CONTINUE_S_4)

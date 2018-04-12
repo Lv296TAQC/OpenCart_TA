@@ -5,6 +5,7 @@ from pages.checkout import CheckoutPage
 from pages.product import ProductPage
 
 
+
 @pytest.fixture()
 def driver(init_driver):
     driver = init_driver

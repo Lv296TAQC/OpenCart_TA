@@ -2,6 +2,7 @@
 Home Page comes here.
 """
 import logging
+import time
 from urllib.parse import urlparse
 
 from selenium.webdriver.support import expected_conditions
@@ -37,11 +38,12 @@ class HomePage(BasePage):
             return True
         return False
 
-    def goto_cart(self) -> "HomePage":
+    def goto_cart(self) -> "CartPage":
         """
         Go to Cart Page.
         :return:self
         """
+        time.sleep(2)
         self.driver.find_element(*BasePageLocators.GO_CART).click()
         return CartPage(self.driver)
 

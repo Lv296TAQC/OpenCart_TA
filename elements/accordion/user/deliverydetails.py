@@ -11,12 +11,16 @@ from locators.checkout import CheckoutPageLocators
 
 # pylint: disable=too-many-instance-attributes
 # pylint: disable=too-few-public-methods
-class DeliveryDetailsGuest(BasePageElement):
+class DeliveryDetailsUser(BasePageElement):
     """
     This class describes delivery details steps of the purchase
     """
+
     def __init__(self, driver):
         super().__init__(driver)
+
+        self.btn_new_address_delivery = Button(self.driver,
+                                               CheckoutPageLocators.RADIO_ADDRESS_DELIVERY)
 
         WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located(CheckoutPageLocators.FIRST_NAME_SHIPPING))
@@ -27,11 +31,8 @@ class DeliveryDetailsGuest(BasePageElement):
         self.address_1 = self.driver.find_element(*CheckoutPageLocators.ADDRESS_1_SHIPPING)
         self.address_2 = self.driver.find_element(*CheckoutPageLocators.ADDRESS_2_SHIPPING)
         self.city = self.driver.find_element(*CheckoutPageLocators.CITY_SHIPPING)
-        self.post_code = self.driver.find_element(*CheckoutPageLocators.POST_CODE_SHIPPING)
         self.country = self.driver.find_element(*CheckoutPageLocators.COUNTRY_SHIPPING)
-        self.region_or_state = self.driver.find_element(
-            *CheckoutPageLocators.REGION_OR_STATE_SHIPPING)
-
-        self.btn_new_address = Button(self.driver, CheckoutPageLocators.RADIO_ADDRESS_DELIVERY)
+        self.region_or_state = self.driver. \
+            find_element(*CheckoutPageLocators.REGION_OR_STATE_SHIPPING)
 
         self.btn = Button(self.driver, CheckoutPageLocators.BTN_CONTINUE_S_3)

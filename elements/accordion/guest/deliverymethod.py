@@ -11,7 +11,7 @@ from locators.checkout import CheckoutPageLocators
 
 # pylint: disable=too-many-instance-attributes
 # pylint: disable=too-few-public-methods
-class DeliveryMethod(BasePageElement):
+class DeliveryMethodGuest(BasePageElement):
     """
     This class describes delivery details steps of the purchase
     """

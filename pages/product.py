@@ -28,7 +28,7 @@ class ProductPage(BasePage):
         self.driver.implicitly_wait(5)
         return self
 
-    def goto_cart(self) -> object:
+    def goto_cart(self) -> "CartPage":
         """
         Make webdriver go to Cart Page.
 
