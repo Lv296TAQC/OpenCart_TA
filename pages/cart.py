@@ -82,9 +82,11 @@ class CartPage(BasePage):
         self.driver.refresh()
         return self
 
-    def goto_checkout(self):
+    def goto_checkout(self) -> "CheckoutPage":
         """
-        TODO
+        Make webdriver go to Checkout Page
+
+        :return: Checkout Page Object.
         """
         WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located(CartPageLocators.GO_CHECKOUT)
