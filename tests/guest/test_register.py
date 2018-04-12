@@ -3,8 +3,6 @@ import pytest
 from elements.formreg import Reg
 from faker import Faker
 
-
-
 titel_error_expect = "Warning: You must agree to the Privacy Policy!"
 telephone_error_expect = "Telephone must be between 3 and 32 characters!"
 first_name_error_expect = "First Name must be between 1 and 32 characters!"
@@ -21,6 +19,7 @@ telephone = fake.phone_number()
 password = 'qwer'
 page = Reg()
 
+
 @pytest.allure.CRITICAL
 @allure.step('check if there is an error in the header')
 def test_send_none_title():
@@ -28,31 +27,59 @@ def test_send_none_title():
     page.continue_btn
     assert titel_error_expect == page.title_error
 
+
 @pytest.allure.NORMAL
 @allure.step('check if there is an error below the field telefon')
 def test_send_none_telefon():
     assert telephone_error_expect == page.telephone_error
+
 
 @pytest.allure.NORMAL
 @allure.step('check if there is an error below the field first name')
 def test_send_none_first():
     assert first_name_error_expect == page.first_name_error
 
+
 @pytest.allure.NORMAL
 @allure.step('check if there is an error below the field last name')
 def test_send_none_last():
     assert last_name_error_expect == page.last_name_error
+
 
 @pytest.allure.NORMAL
 @allure.step('check if there is an error below the field last email')
 def test_send_none_email():
     assert e_mail_error_expect == page.e_mail_error
 
+
 @pytest.allure.NORMAL
 @allure.step('check if there is an error below the field last password')
 def test_send_none_password():
     assert password_error_expect == page.password_error
     page.close()
+
+
+@pytest.allure.NORMAL
+@allure.step('checks validator fields email incorrect value ')
+def test_email_validator_inc_val():
+    page.open()
+    page.agri_checkbox
+    page.e_mail = first_name
+    page.continue_btn
+    assert (first_name in page.validator())
+    page.close()
+
+
+@pytest.allure.NORMAL
+@allure.step('checks validator fields email correct values ')
+def test_email_validator_correct():
+    page.open()
+    page.agri_checkbox
+    page.e_mail = email
+    page.continue_btn
+    assert (first_name not in page.validator())
+    page.close()
+
 
 @pytest.allure.NORMAL
 @allure.step('checks whether the error  below is all fields')
@@ -67,15 +94,18 @@ def test_send_more():
     page.confir_password = last_name * 10
     page.continue_btn
 
+
 @pytest.allure.NORMAL
 @allure.step('checks whether the error below is telefon')
 def test_send_more_telefon():
     assert telephone_error_expect == page.telephone_error
 
+
 @pytest.allure.NORMAL
 @allure.step('checks whether the error  is below first name')
 def test_send_more_first():
     assert first_name_error_expect == page.first_name_error
+
 
 @pytest.allure.NORMAL
 @allure.step('checks whether the error  is below last name')
@@ -88,16 +118,19 @@ def test_send_more_last():
 def test_send_more_email():
     assert e_mail_error_expect == page.e_mail_error
 
+
 @pytest.allure.NORMAL
 @allure.step('checks whether the error  is below password')
 def test_send_more_password():
     assert password_error_expect == page.password_error
+
 
 @pytest.allure.NORMAL
 @allure.step('checks whether the error  is below confirm password')
 def test_send_more_password_confirm():
     assert password_confirm_error_expect == page.password_confirm_error
     page.close()
+
 
 @pytest.allure.BLOCKER
 @allure.step('create account')
@@ -114,6 +147,7 @@ def test_send_good():
     assert 'Your Account Has Been Created!' == page.title()
     page.close()
 
+
 @pytest.allure.BLOCKER
 @allure.step('create account with the same cread')
 def test_the_same_cred():
@@ -128,6 +162,7 @@ def test_the_same_cred():
     page.continue_btn
     assert titel_error_cred == page.title_error
     page.close()
+
 
 @pytest.allure.BLOCKER
 @allure.step('try to be login in')
