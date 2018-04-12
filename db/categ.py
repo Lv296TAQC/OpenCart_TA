@@ -1,7 +1,9 @@
 """ Count subcategore in DB"""
 from sqlalchemy import create_engine
 
-ENGINE = create_engine('mysql://sql11229446:3bMtQsxd8c@sql11.freemysqlhosting.net/sql11229446')
+from helpers.settings import BASE_CONNECTION
+
+ENGINE = create_engine(BASE_CONNECTION)
 for row in ENGINE.execute('SELECT COUNT(parent_id) FROM `oc_category` WHERE `parent_id`=20'):
     desctops = dict(row)
     quantity_desktops = (desctops['COUNT(parent_id)'])
