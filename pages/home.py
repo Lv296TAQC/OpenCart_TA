@@ -29,51 +29,62 @@ class HomePage(BasePage):
         self.driver.find_element(*BasePageLocators.GO_LOGIN).click()
         return LoginPage(self.driver)
 
-    def is_on_home_page(self):
+    def is_on_home_page(self) -> bool:
         """
-        Make sure we on Home Page.
+        Check whether driver is on home page now.
+
+        :return: True if you are on home page, False if not
         """
         current_url_path = urlparse(self.driver.current_url).path
         if current_url_path == "/opencart.com/":
+            logging.info("You are on home page!")
             return True
+        logging.error("Something went wrong!")
         return False
 
     def goto_cart(self) -> "CartPage":
         """
-        Go to Cart Page.
-        :return:self
+        Click on the Shopping Cart tab.
+
+        :return: CartPage object
         """
         time.sleep(2)
         self.driver.find_element(*BasePageLocators.GO_CART).click()
+        logging.info("Clicked on the Shopping Cart tab")
         return CartPage(self.driver)
 
     def click_nav_components(self) -> "HomePage":
         """
-        Click Component Tab.
-        :return:self
+        Click on the Components Tab.
+
+        :return: Home page object with dropped out components list
         """
         self.driver.find_element(*BasePageLocators.COMPONENTS).click()
+        logging.info("Clicked on on the Components Tab")
         return self
 
-    def click_nav_components_monitors(self):
+    def click_nav_components_monitors(self) -> "ProductsPage":
         """
-        Click Component Tab.
-        Click Monitors.
+        Click on the Component Tab and on the Monitors link after that.
+
+        :return: ProductsPage object
         """
         self.click_nav_components()
         monitors = self.driver.find_element(*BasePageLocators.MONITORS)
         wait = WebDriverWait(self.driver, 10)
         wait.until(expected_conditions.element_to_be_clickable(BasePageLocators.MONITORS))
         monitors.click()
+        logging.info("Clicked on on the Monitors link")
         return ProductsPage(self.driver)
 
-    def click_nav_phones(self) -> ProductsPage:
+    def click_nav_phones(self) -> "ProductsPage":
         """
-        Click Phones Tab.
-        :return:driver
+        Click on the Phones Tab.
+
+        :return: ProductsPage object
         """
         self.driver.find_element(*BasePageLocators.PHONES).click()
-
+        logging.info('clicking top Navigation Desktops Bar')
         return ProductsPage(self.driver)
 
     def click_nav_desktops(self) -> "HomePage":
@@ -238,7 +249,6 @@ class HomePage(BasePage):
         Find all subcategory Components
         :return:subcategory components
         """
-
         components_list = self.driver.find_elements(*BasePageLocators.LIST_COMPONENS)
         return components_list
 
@@ -247,7 +257,6 @@ class HomePage(BasePage):
         Find all subcategory Desktops
         :return:subcategory desktops
         """
-
         desktops_list = self.driver.find_elements(*BasePageLocators.LIST_DESKTOPS)
         return desktops_list
 
@@ -256,7 +265,6 @@ class HomePage(BasePage):
         Find all subcategory Laptops
         :return:subcategory laptops
         """
-
         laptops_list = self.driver.find_elements(*BasePageLocators.LIST_LAPTOPS)
         return laptops_list
 

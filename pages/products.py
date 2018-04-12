@@ -2,6 +2,7 @@
 Products Page comes here.
 """
 # pylint: disable=too-few-public-methods
+# pylint: disable=logging-format-interpolation
 import logging
 
 from locators.products import ProductsPageLocators
@@ -23,9 +24,13 @@ class ProductsPage(BasePage):
         self.driver.find_element(*ProductsPageLocators.MAC_PRODUCT_IMAGE).click()
         return ProductPage(self.driver)
 
-    def goto_product_page(self, product_name):
+    def goto_product_page(self, product_name: str) -> "ProductPage":
         """
-        TODO
+        Click on selected product link.
+
+        :param product_name: Name of product you want to add
+        :return: ProductPage object
         """
         self.driver.find_element(*ProductsPageLocators.find_product_link(product_name)).click()
+        logging.info("You went to {} product page!".format(product_name))
         return ProductPage(self.driver)

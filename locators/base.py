@@ -20,6 +20,7 @@ class BasePageLocators:
     CAMERAS = (By.XPATH, '//a[text()="Cameras"]')
     MP3S = (By.XPATH, '//a[text()="MP3 Players"]')
     BTN_GREY_CART = (By.ID, "cart")
+    EMPTY_CART_BUTTON_TEXT = (By.XPATH, '//p[text()="Your shopping cart is empty!"]')
     BTN_GREY_CARD_AMOUNT = (By.ID, "cart-total")
     LINK_VIEW_CART = (By.XPATH, '//*[@id="cart"]/ul/li[2]/div/p/a[1]')
     LINK_CHECKOUT = (By.XPATH, '//*[@id="cart"]/ul/li[2]/div/p/a[2]')
