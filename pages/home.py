@@ -268,6 +268,15 @@ class HomePage(BasePage):
         laptops_list = self.driver.find_elements(*BasePageLocators.LIST_LAPTOPS)
         return laptops_list
 
+    def logout(self) -> "HomePage":
+        """
+        Logout from user's account.
+        """
+        logging.info("Click on 'My Account' dropdown and click 'Logout'.")
+        self.driver.find_element(*BasePageLocators.MY_ACCOUNT_DROPDOWN).click()
+        self.driver.find_element(*BasePageLocators.LOGOUT).click()
+        return self
+
     def title(self) -> str:
         """
         find the page name

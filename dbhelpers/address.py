@@ -2,6 +2,7 @@
 Contains DbAddress class for interacting
 with a table oc_address from opencart database.
 """
+import logging
 from db.country import Country
 from db.zone import Zone
 from db.address import Address
@@ -26,6 +27,7 @@ class DbAddress:
         :return: object AddressBook with data from oc_address table.
         """
         session = session_factory()
+        logging.info("Query address entry from oc_address table.")
         query = session.query(Address)
         address = query.filter(Address.address_id == user.address_id).first()
         zone = session.query(Zone.name).filter(Zone.zone_id == address.zone_id).first()

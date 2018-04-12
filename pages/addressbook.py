@@ -1,6 +1,7 @@
 """
 Contains the AddressBookPage class for interacting with the AddressBook page.
 """
+import logging
 import re
 from typing import List
 from models.addressbook import AddressBook
@@ -21,6 +22,7 @@ class AddressBookPage(BasePage):
 
         :return: informal text message.
         """
+        logging.info("Get informal message from 'Address Book' page.")
         return self.driver.find_element(*AddressBookLocators.ALERT_MESSAGE).text
 
     def records_count(self) -> int:
@@ -29,6 +31,7 @@ class AddressBookPage(BasePage):
 
         :return: count of address book records.
         """
+        logging.info("Get entries count on 'Address Book' page.")
         return len(self.driver.find_elements(*AddressBookLocators.BTN_EDIT_LIST))
 
     def goto_editaddress_page_by_index(self, index: int) -> AddAddressPage:
@@ -40,6 +43,7 @@ class AddressBookPage(BasePage):
         in list of addresses on the Address Book page.
         :return: AddAddressPage.
         """
+        logging.info(f"Click on 'Edit' button by index {index}.")
         self.driver.find_elements(*AddressBookLocators.BTN_EDIT_LIST)[index].click()
         return AddAddressPage(self.driver)
 
@@ -52,6 +56,7 @@ class AddressBookPage(BasePage):
         in list of addresses on Address Book page.
         :return: self object.
         """
+        logging.info(f"Click on 'Delete' button by index {index}.")
         self.driver.find_elements(*AddressBookLocators.BTN_DELETE_LIST)[index].click()
         return self
 
@@ -61,6 +66,7 @@ class AddressBookPage(BasePage):
 
         :return: AddAddressPage.
         """
+        logging.info("Click on 'New Address' button.")
         self.driver.find_element(*AddressBookLocators.BTN_NEW_ADDRESS).click()
         return AddAddressPage(self.driver)
 
@@ -71,6 +77,7 @@ class AddressBookPage(BasePage):
 
         :return: list of AddressBook objects.
         """
+        logging.info("Get list of AddressBook objects with all address entries on page.")
         address_list = []
         for line in self.driver.find_elements(*AddressBookLocators.CONTENT_LIST):
             content = re.sub(r'\s', '', line.text)
@@ -80,11 +87,13 @@ class AddressBookPage(BasePage):
     @staticmethod
     def get_content_info_from_form(address_obj: AddressBook) -> AddressBook:
         """
-        Get text from object, filter and convert it into another object.
+        Get text from AddressBook object, filter and convert it into another AddressBook object.
 
         :param address_obj: object that we used to create/edit Add Address form.
         :return: AddressBook object with filtered text.
         """
+        logging.info("Get text from AddressBook object,"
+                     "filter and convert it into another AddressBook object.")
         info_from_object = []
         for attr in address_obj.__dict__.items():
             if attr[1] is not None:
@@ -99,6 +108,7 @@ class AddressBookPage(BasePage):
 
         :return: AddressBook object.
         """
+        logging.info(f"Convert data from {index} entry to AddressBook object.")
         info = self.driver.find_elements(*AddressBookLocators.CONTENT_LIST)[index].text
         content = re.sub(r'\s', '', info)
         return AddressBook(content=content)

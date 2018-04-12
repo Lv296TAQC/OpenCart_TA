@@ -39,4 +39,5 @@ class BasePageLocators:
     LIST_DESKTOPS = (By.XPATH, '//*[@id="menu"]/div[2]/ul/li[1]/div/div/ul/li/a')
     LIST_LAPTOPS = (By.XPATH, '//*[@id="menu"]/div[2]/ul/li[2]/div/div/ul/li/a')
     LIST_COMPONENS = (By.XPATH, '//*[@id="menu"]/div[2]/ul/li[3]/div/div/ul/li/a')
+    LOGOUT = (By.XPATH, "//ul[@class='list-inline']//a[.='Logout']")
     PC = (By.XPATH, '//a[contains(text(),"PC")]')
