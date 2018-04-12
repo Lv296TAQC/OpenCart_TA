@@ -5,6 +5,7 @@ from pages.addressbook import AddressBookPage
 from helpers.settings import BASE_USER_EMAIL, BASE_USER_PASSWORD, BASE_HOST
 
 
+@pytest.allure.testcase('https://ssu-jira.softserveinc.com/browse/OPENCARTPY-41')
 def test_edit_address_by_index(init_driver, index=3):
     address = AddressBook(first_name="edited_firstname",
                           last_name="edited_lastname",
