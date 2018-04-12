@@ -69,3 +69,5 @@ class CheckoutPageLocators(BasePageLocators):
     BTN_CONTINUE_S_5 = (By.ID, 'button-payment-method')
 
     BTN_CONFIRM_ORDER = (By.ID, 'button-confirm')
+
+    ALERT = (By.XPATH, '//*[@id="collapse-checkout-option"]/div/div[1]')
