@@ -1,5 +1,5 @@
 """
-Locators for Account Page are placed here
+Account Page comes here.
 """
 from selenium.webdriver.common.by import By
 from .base import BasePageLocators
