@@ -29,3 +29,5 @@ class CheckoutOptionsUser(BasePageElement):
 
         self.email_field = self.driver.find_element(*CheckoutPageLocators.E_MAIL)
         self.pass_field = self.driver.find_element(*CheckoutPageLocators.PASSWORD)
+
+        self.alert = self.driver.find_element(*CheckoutPageLocators.ALERT)

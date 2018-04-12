@@ -18,8 +18,8 @@ def driver(init_driver):
 
 
 def test_base_flow(driver):
-    (CheckoutPage(driver).checkout_options_g()
-                         .add_billing_details_g()
-                         .delivery_method_g()
-                         .payment_method_g()
+    (CheckoutPage(driver).checkout_options_guest()
+                         .add_billing_details_guest()
+                         .delivery_method_guest()
+                         .payment_method_guest()
                          .confirm_order())

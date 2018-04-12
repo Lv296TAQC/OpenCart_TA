@@ -281,6 +281,7 @@ class HomePage(BasePage):
         Logout from user's account.
         """
         logging.info("Click on 'My Account' dropdown and click 'Logout'.")
+        time.sleep(2)
         self.driver.find_element(*BasePageLocators.MY_ACCOUNT_DROPDOWN).click()
         self.driver.find_element(*BasePageLocators.LOGOUT).click()
         return self
