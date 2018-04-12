@@ -5,7 +5,8 @@ from dbhelpers.customer import DbCustomer
 from helpers.settings import BASE_USER_EMAIL, BASE_USER_PASSWORD, BASE_HOST
 
 
-def test_editaccount(init_driver):
+@pytest.allure.testcase('https://ssu-jira.softserveinc.com/browse/OPENCARTPY-39')
+def test_edit_account_info(init_driver):
     new_data = PersonalDetails(first_name="Serhii",
                                last_name="TestLastName",
                                email="taqc296@gmail.com",

@@ -4,9 +4,11 @@ from pages.home import HomePage
 from pages.account import AccountPage
 from pages.password import PasswordPage
 from dbhelpers.customer import DbCustomer
+from helpers.password import encrypt_user_password
 from helpers.settings import BASE_USER_EMAIL, BASE_USER_PASSWORD, BASE_HOST
 
 
+@pytest.allure.testcase('https://ssu-jira.softserveinc.com/browse/OPENCARTPY-40')
 def test_compare_changed_password(init_driver):
     user_password = Password(password='root')
     driver = init_driver
@@ -29,8 +31,7 @@ def test_compare_changed_password(init_driver):
     with pytest.allure.step("Take salt from db table oc_customer."):
         salt_from_db = DbCustomer.get_salt_by_email(email_from_form)
     with pytest.allure.step("Encrypt password."):
-        encrypted_pass = PasswordPage\
-            .encrypt_user_password(password=user_password, salt=salt_from_db)
+        encrypted_pass = encrypt_user_password(password=user_password, salt=salt_from_db)
     with pytest.allure.step("Take password from db table oc_customer."):
         password_from_db = DbCustomer.get_password_by_email(email_from_form)
     with pytest.allure.step("Compare password from UI with password from DB."):
