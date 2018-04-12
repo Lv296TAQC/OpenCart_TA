@@ -52,8 +52,8 @@ class CheckoutPage(BasePage):
         self.accordion.address_2.send_keys(fake.name())
         self.accordion.city.send_keys(fake.name())
         self.accordion.post_code.send_keys(fake.isbn10(separator=""))
-        self.accordion.contry.click()
-        self.accordion.contry.find_element_by_xpath(
+        self.accordion.country.click()
+        self.accordion.country.find_element_by_xpath(
             '//*[@id="input-payment-country"]/option[2]').click()
         self.accordion.region_or_state.click()
         self.accordion.region_or_state.find_element_by_xpath(
@@ -108,8 +108,8 @@ class CheckoutPage(BasePage):
         self.accordion.address_2.send_keys(fake.name())
         self.accordion.city.send_keys(fake.name())
         self.accordion.post_code.send_keys(fake.isbn10(separator=""))
-        self.accordion.contry.click()
-        self.accordion.contry.find_element_by_xpath(
+        self.accordion.country.click()
+        self.accordion.country.find_element_by_xpath(
             '//*[@id="input-payment-country"]/option[3]').click()
         self.accordion.region_or_state.click()
         self.accordion.region_or_state.find_element_by_xpath(

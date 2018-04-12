@@ -32,7 +32,7 @@ class BillingDetailsUser(BasePageElement):
         self.address_2 = self.driver.find_element(*CheckoutPageLocators.ADDRESS_2_PAYMENT)
         self.city = self.driver.find_element(*CheckoutPageLocators.CITY_PAYMENT)
         self.post_code = self.driver.find_element(*CheckoutPageLocators.POST_CODE_PAYMENT)
-        self.contry = self.driver.find_element(*CheckoutPageLocators.COUNTRY_PAYMENT)
+        self.country = self.driver.find_element(*CheckoutPageLocators.COUNTRY_PAYMENT)
         self.region_or_state = self.driver. \
             find_element(*CheckoutPageLocators.REGION_OR_STATE_PAYMENT)
 

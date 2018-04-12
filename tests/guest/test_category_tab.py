@@ -38,7 +38,7 @@ def test_show_all_desktops(init_driver):
 
 
 @pytest.allure.CRITICAL
-@allure.step('count subcategoty in desktops tab')
+@allure.step('count subcategory in desktops tab')
 def test_count_category_desktop(init_driver):
     driver = init_driver
     driver.get(BASE_HOST)
@@ -48,7 +48,7 @@ def test_count_category_desktop(init_driver):
 
 
 @pytest.allure.CRITICAL
-@allure.step('subcategorys in desktops tab is visibel')
+@allure.step('subcategories in desktops tab is visible')
 def test_display_category_desktop(init_driver):
     driver = init_driver
     driver.get(BASE_HOST)
@@ -90,7 +90,7 @@ def test_show_all_laptops(init_driver):
 
 
 @pytest.allure.CRITICAL
-@allure.step('subcategorys in laptops tab is visibel')
+@allure.step('subcategories in laptops tab is visible')
 def test_display_category_laptops(init_driver):
     driver = init_driver
     driver.get(BASE_HOST)
@@ -102,7 +102,7 @@ def test_display_category_laptops(init_driver):
 
 
 @pytest.allure.CRITICAL
-@allure.step('count subcategoty in laptops tab')
+@allure.step('count subcategory in laptops tab')
 def test_count_category_laptops(init_driver):
     driver = init_driver
     driver.get(BASE_HOST)
@@ -121,7 +121,7 @@ def test_mice(init_driver):
 
 @pytest.allure.BLOCKER
 @allure.step('The monitors  opens when a user clicks on   monitors link on the category tab')
-def test_monitirs(init_driver):
+def test_monitors(init_driver):
     driver = init_driver
     driver.get(BASE_HOST)
     page = HomePage(driver)
@@ -156,7 +156,7 @@ def test_webcamera(init_driver):
     assert ('Web Cameras' == page.title())
 
 @pytest.allure.BLOCKER
-@allure.step('The all componets  opens when a user clicks on a show all components  link on the category tab')
+@allure.step('The all components opens when a user clicks on a show all components  link on the category tab')
 def test_all_components(init_driver):
     driver = init_driver
     driver.get(BASE_HOST)
@@ -165,7 +165,7 @@ def test_all_components(init_driver):
     assert ('Components' == page.title())
 
 @pytest.allure.CRITICAL
-@allure.step('subcategorys in components tab is visibel')
+@allure.step('subcategories in components tab is visible')
 def test_display_category_components(init_driver):
     driver = init_driver
     driver.get(BASE_HOST)
@@ -176,7 +176,7 @@ def test_display_category_components(init_driver):
         assert (list.is_displayed())
 
 @pytest.allure.CRITICAL
-@allure.step('count subcategorys in components')
+@allure.step('count subcategories in components')
 def test_count_category_components(init_driver):
     driver = init_driver
     driver.get(BASE_HOST)

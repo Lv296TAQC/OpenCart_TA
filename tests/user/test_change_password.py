@@ -24,7 +24,7 @@ def test_compare_changed_password(init_driver):
                 'Success: Your password has been successfully updated.')
     with pytest.allure.step("Take text data from E-Mail field."):
         email_from_form = AccountPage(driver)\
-            .goto_editaccount_page()\
+            .goto_edit_account_page()\
             .get_email_from_form()
     with pytest.allure.step("Take salt from db table oc_customer."):
         salt_from_db = DbCustomer.get_salt_by_email(email_from_form)

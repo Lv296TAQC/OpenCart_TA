@@ -70,20 +70,20 @@ class AddAddressPage(BasePage):
             field_name.clear()
             field_name.send_keys(value)
 
-    def get_firstname_error(self) -> str:
+    def get_first_name_error(self) -> str:
         """
         Get an error message from the 'First Name' field.
 
-        :return: firstname error message.
+        :return: first name error message.
         """
         logging.info("Get error message from 'First Name' field.")
         return self.driver.find_element(*AddAddressLocators.FIRSTNAME_ERROR).text
 
-    def get_lastname_error(self) -> str:
+    def get_last_name_error(self) -> str:
         """
         Get an error message from the 'Last Name' field.
 
-        :return: lastname error message.
+        :return: last name error message.
         """
         logging.info("Get error message from 'Last Name' field.")
         return self.driver.find_element(*AddAddressLocators.LASTNAME_ERROR).text

@@ -4,15 +4,14 @@ from elements.formreg import Reg
 from faker import Faker
 
 
-
-titel_error_expect = "Warning: You must agree to the Privacy Policy!"
+title_error_expect = "Warning: You must agree to the Privacy Policy!"
 telephone_error_expect = "Telephone must be between 3 and 32 characters!"
 first_name_error_expect = "First Name must be between 1 and 32 characters!"
 last_name_error_expect = "Last Name must be between 1 and 32 characters!"
 e_mail_error_expect = "E-Mail Address does not appear to be valid!"
 password_error_expect = "Password must be between 4 and 20 characters!"
 password_confirm_error_expect = "Password confirmation does not match password!"
-titel_error_cred = "Warning: E-Mail Address is already registered!"
+title_error_cred = "Warning: E-Mail Address is already registered!"
 fake = Faker()
 first_name = fake.first_name()
 last_name = fake.last_name()
@@ -26,11 +25,11 @@ page = Reg()
 def test_send_none_title():
     page.open()
     page.continue_btn
-    assert titel_error_expect == page.title_error
+    assert title_error_expect == page.title_error
 
 @pytest.allure.NORMAL
-@allure.step('check if there is an error below the field telefon')
-def test_send_none_telefon():
+@allure.step('check if there is an error below the field telephone')
+def test_send_none_telephone():
     assert telephone_error_expect == page.telephone_error
 
 @pytest.allure.NORMAL
@@ -58,18 +57,18 @@ def test_send_none_password():
 @allure.step('checks whether the error  below is all fields')
 def test_send_more():
     page.open()
-    page.agri_checkbox
+    page.agree_checkbox
     page.first_name = first_name * 10
     page.last_name = last_name * 10
     page.e_mail = email + first_name * 5
     page.telephone = telephone * 10
     page.password = telephone * 10
-    page.confir_password = last_name * 10
+    page.confirm_password = last_name * 10
     page.continue_btn
 
 @pytest.allure.NORMAL
-@allure.step('checks whether the error below is telefon')
-def test_send_more_telefon():
+@allure.step('checks whether the error below is telephone')
+def test_send_more_telephone():
     assert telephone_error_expect == page.telephone_error
 
 @pytest.allure.NORMAL
@@ -103,37 +102,37 @@ def test_send_more_password_confirm():
 @allure.step('create account')
 def test_send_good():
     page.open()
-    page.agri_checkbox
+    page.agree_checkbox
     page.first_name = first_name
     page.last_name = last_name
     page.e_mail = email
     page.telephone = telephone
     page.password = password
-    page.confir_password = password
+    page.confirm_password = password
     page.continue_btn
     assert 'Your Account Has Been Created!' == page.title()
     page.close()
 
 @pytest.allure.BLOCKER
-@allure.step('create account with the same cread')
+@allure.step('create account with the same cred')
 def test_the_same_cred():
     page.open()
-    page.agri_checkbox
+    page.agree_checkbox
     page.first_name = first_name
     page.last_name = last_name
     page.e_mail = email
     page.telephone = telephone
     page.password = password
-    page.confir_password = password
+    page.confirm_password = password
     page.continue_btn
-    assert titel_error_cred == page.title_error
+    assert title_error_cred == page.title_error
     page.close()
 
 @pytest.allure.BLOCKER
 @allure.step('try to be login in')
 def test_login():
     page.login()
-    page.input_passwd = password
+    page.input_password = password
     page.input_email = email
     page.login_btn
     assert "My Account" == page.title()

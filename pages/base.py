@@ -37,7 +37,7 @@ class GreyCartBtn:
 
     def is_cart_btn_empty(self) -> bool:
         """
-        Check whether the cartbutton is empty.
+        Check whether the cart button is empty.
 
         :return: True if it`s empty, False if not
         """

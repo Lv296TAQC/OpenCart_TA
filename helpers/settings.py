@@ -1,5 +1,5 @@
 """
-Module contains setings.
+Module contains settings.
 """
 import logging
 

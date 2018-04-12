@@ -22,10 +22,10 @@ def test_edit_address_by_index(init_driver, index=3):
         .input_email(BASE_USER_EMAIL)\
         .input_password(BASE_USER_PASSWORD)\
         .login()\
-        .goto_addressbook_page()
+        .goto_address_book_page()
     while AddressBookPage(driver).records_count() < index + 1:
         AddressBookPage(driver)\
-            .goto_addaddres_page()\
+            .goto_add_address_page()\
             .fill_address_form(address)
     AddressBookPage(driver).\
         goto_editaddress_page_by_index(index).\

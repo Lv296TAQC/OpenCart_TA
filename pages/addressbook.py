@@ -60,7 +60,7 @@ class AddressBookPage(BasePage):
         self.driver.find_elements(*AddressBookLocators.BTN_DELETE_LIST)[index].click()
         return self
 
-    def goto_addaddres_page(self) -> AddAddressPage:
+    def goto_add_address_page(self) -> AddAddressPage:
         """
         Open Add Address form on Address Book page.
 

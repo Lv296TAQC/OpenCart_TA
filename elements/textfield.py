@@ -32,7 +32,7 @@ class TextField(BasePageElement):
 
     def clear(self):
         """
-        Clear the value in the elememt
+        Clear the value in the element
 
         :return: object of the class
         """

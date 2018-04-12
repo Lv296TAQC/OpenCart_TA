@@ -117,7 +117,7 @@ class HomePage(BasePage):
 
     def click_nav_tablets(self) -> ProductsPage:
         """
-        Click Tablests Tab.
+        Click Tablets Tab.
         :return:driver
         """
         self.driver.find_element(*BasePageLocators.TABLETS).click()
@@ -170,7 +170,7 @@ class HomePage(BasePage):
         :return:driver
         """
         self.click_nav_desktops()
-        self.driver.find_element(*BasePageLocators.ALLDESKTOPS).click()
+        self.driver.find_element(*BasePageLocators.ALL_DESKTOPS).click()
         return ProductsPage(self.driver)
 
     def click_nav_laptops_macs(self) -> ProductsPage:
@@ -200,7 +200,7 @@ class HomePage(BasePage):
         :return:driver
         """
         self.click_nav_laptops()
-        self.driver.find_element(*BasePageLocators.ALLLEPTOPS).click()
+        self.driver.find_element(*BasePageLocators.ALL_LAPTOPS).click()
         return ProductsPage(self.driver)
 
     def click_nav_components_mice(self) -> ProductsPage:
@@ -250,7 +250,7 @@ class HomePage(BasePage):
         :return:driver
         """
         self.click_nav_components()
-        self.driver.find_element(*BasePageLocators.ALLCOMPONENTS).click()
+        self.driver.find_element(*BasePageLocators.ALL_COMPONENTS).click()
         return ProductsPage(self.driver)
 
     def get_components_list(self) -> list:
@@ -258,7 +258,7 @@ class HomePage(BasePage):
         Find all subcategory Components
         :return:subcategory components
         """
-        components_list = self.driver.find_elements(*BasePageLocators.LIST_COMPONENS)
+        components_list = self.driver.find_elements(*BasePageLocators.LIST_COMPONENTS)
         return components_list
 
     def get_desktops_list(self) -> list:
