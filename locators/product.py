@@ -11,3 +11,4 @@ class ProductPageLocators(BasePageLocators):
     Locators for Product Page are placed here
     """
     BTN_CART = (By.ID, 'button-cart')
+    ALERT = (By.CLASS_NAME, 'alert')

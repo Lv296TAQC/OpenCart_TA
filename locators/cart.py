@@ -11,7 +11,7 @@ class CartPageLocators(BasePageLocators):
     Locators for Cart Page are placed here
     """
     GO_CHECKOUT = (By.XPATH, '//*[@id="content"]/div[3]/div[2]/a')
-    EMPTY_CART_TEXT = (By.XPATH, '//*[@id="content"]/p')
+    EMPTY_CART_TEXT = (By.XPATH, '//p[text()="Your shopping cart is empty!"]')
     BTN_CONTINUE = (By.XPATH, '//*[@id="content"]/div/div/a')
     QTY_FIELD = (By.XPATH, '//*[@id="content"]/form/div/table/tbody/tr/td[4]/div/input')
     BTN_UPDATE = (
@@ -22,6 +22,21 @@ class CartPageLocators(BasePageLocators):
     BTN_DELETE_PRODUCT = (By.CLASS_NAME, 'btn btn-danger')
     BTN_EDIT_QTY = (By.CLASS_NAME, 'btn-primary')
     FIELD_PRODUCT_QTY = (By.CLASS_NAME, 'form-control')
+    MODIFIED_CART_TEXT = (
+        By.XPATH, '//div[contains(text(),"You have modified your shopping cart!")]')
+    TOTAL_SUM = (By.XPATH, '//*[@id="content"]/form/div/table/tbody/tr/td[6]')
+    ALERT_TOO_MUCH_PRODUCT = (By.XPATH, '//*[@id="checkout-cart"]/div[2]')
+
+    @staticmethod
+    def product_number(number: int) -> tuple:
+        """
+        Wrapper for product locator on the Cart page.
+
+        :param number: Name of product need to be added
+        :return: WebElement locator
+        """
+        product_row = (By.XPATH, '//*[@id="content"]/form/div/table/tbody/tr[{}]'.format(number))
+        return product_row
 
     @staticmethod
     def find_product_edit_field(edit_model: str) -> tuple:

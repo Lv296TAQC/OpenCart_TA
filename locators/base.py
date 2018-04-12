@@ -3,6 +3,8 @@ All common locators for all Pages are placed here
 """
 from selenium.webdriver.common.by import By
 
+from helpers.settings import BASE_HOST
+
 
 # pylint: disable=too-few-public-methods
 class BasePageLocators:
@@ -20,8 +22,10 @@ class BasePageLocators:
     CAMERAS = (By.XPATH, '//a[text()="Cameras"]')
     MP3S = (By.XPATH, '//a[text()="MP3 Players"]')
     BTN_GREY_CART = (By.ID, "cart")
+    EMPTY_CART_BUTTON_TEXT = (By.XPATH, '//p[text()="Your shopping cart is empty!"]')
+    BTN_GREY_CARD_AMOUNT = (By.ID, "cart-total")
     LINK_VIEW_CART = (By.XPATH, '//*[@id="cart"]/ul/li[2]/div/p/a[1]')
-    LINK_CHECKOUT = (By.PARTIAL_LINK_TEXT, '//*[@id="cart"]/ul/li[2]/div/p/a[2]')
+    LINK_CHECKOUT = (By.XPATH, '//*[@id="cart"]/ul/li[2]/div/p/a[2]')
     COMPONENTS = (By.XPATH, '//a[text()="Components"]')
     MONITORS = (By.XPATH, '//a[contains(text(),"Monitors")]')
     MAC = (By.XPATH, '//a[contains(text(),"Mac")]')
@@ -37,4 +41,8 @@ class BasePageLocators:
     LIST_DESKTOPS = (By.XPATH, '//*[@id="menu"]/div[2]/ul/li[1]/div/div/ul/li/a')
     LIST_LAPTOPS = (By.XPATH, '//*[@id="menu"]/div[2]/ul/li[2]/div/div/ul/li/a')
     LIST_COMPONENS = (By.XPATH, '//*[@id="menu"]/div[2]/ul/li[3]/div/div/ul/li/a')
+    LOGOUT = (By.XPATH, "//ul[@class='list-inline']//a[.='Logout']")
     PC = (By.XPATH, '//a[contains(text(),"PC")]')
+
+    # FOOTER
+    RETURNS = (By.CSS_SELECTOR, f'a[href="{BASE_HOST}/index.php?route=account/return/add"]')

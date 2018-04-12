@@ -4,10 +4,11 @@ Cart Page comes here.
 import logging
 
 from urllib.parse import urlparse
-from selenium.webdriver.common.keys import Keys
 
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 
 from locators.cart import CartPageLocators
 from locators.products import ProductsPageLocators
@@ -15,12 +16,14 @@ from .base import BasePage
 from .checkout import CheckoutPage
 
 
+# pylint: disable=logging-format-interpolation
+# pylint: disable=attribute-defined-outside-init
 class CartPage(BasePage):
     """
     Cart Page methods come here.
     """
 
-    def edit_good_qty(self, qty: int) -> object:
+    def edit_good_qty(self, qty: int) -> "CartPage":
         """
         Make webdriver change qty of first product in Cart.
 
@@ -90,54 +93,95 @@ class CartPage(BasePage):
         element.click()
         return CheckoutPage(self.driver)
 
-    def is_on_cart_page(self):
+    def is_on_cart_page(self) -> bool:
         """
-        TODO
+        Check whether driver is on shopping cart page now.
+
+        :return: True if driver is on shopping cart page, False if not
         """
         current_url_path = urlparse(self.driver.current_url).path
-        if current_url_path == "/opencart.com/index.php?route=checkout/cart":
+        if current_url_path == "/opencart.com/index.php":
+            logging.info("You are on shopping cart page!")
             return True
+        logging.error("Something went wrong!")
         return False
 
-    def is_cart_empty(self):
+    def is_cart_empty(self) -> bool:
         """
-        TODO
+        Check whether the shopping cart page is empty.
+
+        :return: True if it`s empty, False if not
         """
         empty_cart_text = self.driver.find_element(*CartPageLocators.EMPTY_CART_TEXT)
         if empty_cart_text:
+            logging.info("Your shopping cart is empty!")
             return True
+        logging.error("Something went wrong!")
         return False
 
-    def is_product_added(self, product_name):
+    def is_product_added(self, product_name: str) -> bool:
         """
-        TODO
+        Check whether the product page is added to cart.
+
+        :param product_name: Name of added product
+        :return: True if product was added, False if not
         """
         if self.driver.find_element(*ProductsPageLocators.find_product_link(product_name)):
+            logging.info("You have added {} to your cart!".format(product_name))
             return True
+        logging.error("Something went wrong!")
         return False
 
     def click_on_continue_button(self):
         """
-        TODO
+        Click on the Continue button when cart is empty.
+
+        :return: instance driver
         """
         self.driver.find_element(*CartPageLocators.BTN_CONTINUE).click()
+        logging.info("Clicked on the continue button!")
         return self.driver
 
-    def edit_product_qty(self, qty):
+    def _product_number(self, number: int):
         """
-        TODO
+        Protected method to get product number.
         """
-        field_edit = self.driver.find_elements(*CartPageLocators.FIELD_PRODUCT_QTY)
-        field_edit[1].clear()
-        field_edit[1].send_keys(qty)
-        btn_edit = self.driver.find_elements(*CartPageLocators.BTN_EDIT_QTY)
-        btn_edit[0].click()
+        self.row = self.driver.find_element(*CartPageLocators.product_number(number))
+        return self.row
+
+    def edit_qty_field(self, quantity: int) -> "Cart Page":
+        """
+        Edit quantity of added product.
+
+        :param quantity: quantity of added product
+        :return: Cart Page Object with changed qty of added product
+        """
+        self._product_number(1)
+        input_field = self.row.find_element(By.TAG_NAME, "input")
+        input_field.clear()
+        input_field.send_keys(quantity)
+        input_field.send_keys(Keys.ENTER)
         return self
 
-    def delete_product_from_cart(self):
+    def click_on_delete_btn(self) -> "Cart Page":
         """
-        TODO
+        Delete product from Cart.
+
+        :return: Cart Page Object with deleted product from Cart.
         """
-        delete_buttons = self.driver.find_elements(*CartPageLocators.BTN_DELETE_PRODUCT)
-        delete_buttons[0].click()
+        self._product_number(1)
+        self.row.find_element(By.XPATH, "//button[2]").click()
         return self
+
+    def is_cart_modified(self) -> bool:
+        """
+        Check whether the shopping cart page was modified.
+
+        :return: True if it`s modified, False if not
+        """
+        modified_cart_text = self.driver.find_element(*CartPageLocators.MODIFIED_CART_TEXT)
+        if modified_cart_text:
+            logging.info("Shopping cart was modified")
+            return True
+        logging.error("Something went wrong!")
+        return False
