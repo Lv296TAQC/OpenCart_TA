@@ -2,6 +2,7 @@
 Returns Page locators come here
 """
 from selenium.webdriver.common.by import By
+
 from .base import BasePageLocators
 
 

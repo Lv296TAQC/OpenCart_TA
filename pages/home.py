@@ -56,6 +56,7 @@ class HomePage(BasePage):
     def goto_returns(self) -> "ReturnsPage":
         """
         Go to Returns Page.
+
         :return: object of ReturnsPage class
         """
         self.driver.find_element(*BasePageLocators.RETURNS).click()
