@@ -1,6 +1,7 @@
 """
 Contains the EditAccountPage class for interacting with the EditAccount page.
 """
+import logging
 from locators.editaccount import EditAccountLocators
 from models.personaldetails import PersonalDetails
 from .base import BasePage
@@ -20,6 +21,7 @@ class EditAccountPage(BasePage):
         :param form_textfield: textfield's id.
         :param data: data entered in the textfield.
         """
+        logging.info(f"Set data into {form_textfield} text field.")
         if data is not None:
             form_textfield.click()
             form_textfield.clear()
@@ -42,3 +44,13 @@ class EditAccountPage(BasePage):
             self.driver.find_element(*EditAccountLocators.TELEPHONE_FIELD), user_data.telephone)
         self.driver.find_element(*EditAccountLocators.BTN_CONTINUE).click()
         return self
+
+    def get_email_from_form(self) -> PersonalDetails:
+        """
+        Take data from the E-mail field.
+
+        :return: PersonalDetails object with email.
+        """
+        logging.info("Take email data and convert into PersonalDetails object.")
+        data = self.driver.find_element(*EditAccountLocators.EMAIL_FIELD).get_attribute('value')
+        return PersonalDetails(email=data)
