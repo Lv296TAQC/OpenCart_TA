@@ -90,3 +90,13 @@ class Reg:
         :return: title
         """
         return Wrapper().conection.title
+
+    @staticmethod
+    def validator() -> str:
+        """
+        validation message
+        return: message which generates validator
+        """
+        validation_message = Wrapper().conection.find_element_by_id('input-email').get_attribute\
+            ("validationMessage")
+        return validation_message
