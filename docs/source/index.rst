@@ -6,11 +6,24 @@
 Welcome to Test automation framework for OpenCart's documentation!
 ==================================================================
 
+
+`Repo
+<https://github.com/Lv296TAQC/OpenCart_TA>`_
+
+:Authors: LV296TAQC
+:Version: 1.0.0 of 13/04/2018
+:Dedication: Offering Stage
+
+.. note:: You can find pages, elements and locators below.
+
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-
+   pages
+   elements
+   locators
 
 Indices and tables
 ==================
