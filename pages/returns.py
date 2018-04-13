@@ -21,6 +21,26 @@ class ReturnsPage(BasePage):
     Returns Page methods come here.
     """
 
+    def get_text_danger(self, field: tuple) -> str:
+        """
+        Get text-danger of the field
+
+        :param field: locator the field
+        :return: text-danger
+        """
+        return self.driver.find_element_by_css_selector(
+            f'#{getattr(ReturnsPageLocators, field.upper())[1]}+div').text
+
+    def get_color(self, field: tuple) -> str:
+        """
+       Get value color of the field
+
+       :param field: locator the field
+       :return: value color of the field
+       """
+        return self.driver.find_element_by_css_selector(
+            f'#{getattr(ReturnsPageLocators, field.upper())[1]}+div').value_of_css_property('color')
+
     def fill_order_information(self, mode: str = 'base', **kwargs: Dict[str, int]) -> 'ReturnsPage':
         """
         Fill order information fields depends on the chosen mode
@@ -61,7 +81,7 @@ class ReturnsPage(BasePage):
 
         return self
 
-    def fill_product_information(self) -> 'ReturnsPage':
+    def fill_product_information(self) -> "ReturnsPage":
         """
         Fill all fields of product information
 
@@ -84,7 +104,7 @@ class ReturnsPage(BasePage):
 
         return self
 
-    def click_submit(self) -> 'ReturnsPage':
+    def click_submit(self) -> "ReturnsPage":
         """
         Click on submit button
 
@@ -103,3 +123,12 @@ class ReturnsPage(BasePage):
         Button(self.driver, ReturnsPageLocators.BTN_BACK).click()
         logging.info('Click on BACK button')
         return LoginPage(self.driver)
+
+    def logout(self):
+        """
+        Click on logout in right column
+
+        :return: object of HomePage class
+        """
+        self.driver.find_element_by_xpath('//*[@id="column-right"]/div/a[13]').click()
+        return self.driver
