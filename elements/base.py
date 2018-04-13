@@ -1,5 +1,5 @@
 """
-TODO
+Class Base comes here.
 """
 from selenium import webdriver
 
@@ -10,6 +10,6 @@ class BasePageElement:
 
     def __init__(self, driver=None):
         """
-        TODO
+        Initialization of base driver.
         """
         self.driver = driver if driver else webdriver.Chrome()

@@ -1,5 +1,5 @@
 """
-TODO
+Generator of random emails, digits, names, passwords.
 """
 import random
 import string
