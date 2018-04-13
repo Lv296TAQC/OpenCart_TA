@@ -10,7 +10,7 @@ from pages.cart import CartPage
 from pages.home import HomePage
 from pages.base import GreyCartBtn
 
-
+@pytest.allure.testcase('https://ssu-jira.softserveinc.com/browse/OPENCARTPY-7')
 def test_check_default_cart_empty(init_driver):
     _PAGE = None
     driver = init_driver
@@ -34,7 +34,7 @@ def test_add_goods_to_cart(init_driver):
     with pytest.allure.step('Testing adding goods to cart functional'):
         _PAGE = HomePage(driver)\
             .click_nav_desktops_mac()\
-            .goto_mac_desctops()\
+            .goto_mac_desktops()\
             .add_to_cart()
         success_text = _PAGE.driver.find_element(*ProductPageLocators.ALERT)
         assert 'Success: You have added' in success_text.text

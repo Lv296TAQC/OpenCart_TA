@@ -17,13 +17,13 @@ class RegisterElementLocators:
     PASSWORD = (By.ID, 'input-password')
     CONFIRMPASSWORD = (By.ID, 'input-confirm')
     CONTINUE = (By.XPATH, '//*[@id="content"]/form/div/div/input[2]')
-    AGRI = (By.NAME, 'agree')
+    AGREE = (By.NAME, 'agree')
 
 
 # pylint: disable=too-few-public-methods
-class ErorsRegisterElement:
+class ErrorsRegisterElement:
     """
-    Locators for register form erors are placed here
+    Locators for register form errors are placed here
     """
     ETITLE = (By.XPATH, "//div[@id='account-register']/div")
     EFIRSTNAME = (By.XPATH, "//fieldset[@id='account']/div[2]/div/div")

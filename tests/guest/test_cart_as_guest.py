@@ -54,7 +54,7 @@ def test_view_cart_link(init_driver):
         assert CartPage(init_driver).is_on_cart_page()
 
 
-@pytest.allure.step('Testing editing product qantity on Cart Page.')
+@pytest.allure.step('Testing editing product quantity on Cart Page.')
 def test_edit_product_qty(init_driver):
         init_driver.get(BASE_HOST)
         assert (HomePage(init_driver)

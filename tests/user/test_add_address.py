@@ -25,12 +25,12 @@ def test_add_correctly_address(init_driver):
             .input_email(BASE_USER_EMAIL)\
             .input_password(BASE_USER_PASSWORD)\
             .login()\
-            .goto_addressbook_page()
+            .goto_address_book_page()
     with pytest.allure.step("Collect address book list from Address Book page."):
         previous_address_list = AddressBookPage(driver).get_content_info_from_list()
     with pytest.allure.step("Create new address book record."):
         AddressBookPage(driver)\
-            .goto_addaddres_page()\
+            .goto_add_address_page()\
             .fill_address_form(address_data)
     with pytest.allure.step("Collect address book list from Address Book page with new record."):
         updated_address_list = AddressBookPage(driver).get_content_info_from_list()
@@ -58,15 +58,15 @@ def test_check_error_messages_in_form(init_driver):
         .input_email(BASE_USER_EMAIL)\
         .input_password(BASE_USER_PASSWORD)\
         .login()\
-        .goto_addressbook_page()\
-        .goto_addaddres_page()\
+        .goto_address_book_page()\
+        .goto_add_address_page()\
         .fill_address_form(data)
     with pytest.allure.step("Check error message in the 'First Name' field."):
         assert AddAddressPage(
-            driver).get_firstname_error() == "First Name must be between 1 and 32 characters!"
+            driver).get_first_name_error() == "First Name must be between 1 and 32 characters!"
     with pytest.allure.step("Check error message in the 'Last Name' field."):
         assert AddAddressPage(
-            driver).get_lastname_error() == "Last Name must be between 1 and 32 characters!"
+            driver).get_last_name_error() == "Last Name must be between 1 and 32 characters!"
     with pytest.allure.step("Check error message in the 'Address 1' field."):
         assert AddAddressPage(
             driver).get_address1_error() == "Address must be between 3 and 128 characters!"

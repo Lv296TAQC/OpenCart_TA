@@ -14,7 +14,7 @@ class ProductsPage(BasePage):
     """
     Products Page methods come here.
     """
-    def goto_mac_desctops(self) -> "ProductPage":
+    def goto_mac_desktops(self) -> "ProductPage":
         """
         Make webdriver click MAC desktop.
 
