@@ -1,6 +1,7 @@
 """
 Checkout Page comes here.
 """
+import logging
 from faker import Faker
 
 from elements.accordion.guest.billingdetails import BillingDetailsGuest
@@ -27,7 +28,7 @@ class CheckoutPage(BasePage):
     Checkout Page methods come here.
     """
 
-    def checkout_options_g(self) -> "CheckoutPage":
+    def checkout_options_guest(self) -> "CheckoutPage":
         """
         Fill checkout options
         """
@@ -36,7 +37,7 @@ class CheckoutPage(BasePage):
         self.accordion.btn_account.click()
         return self
 
-    def add_billing_details_g(self) -> "CheckoutPage":
+    def add_billing_details_guest(self) -> "CheckoutPage":
         """
         Fill billing details
         """
@@ -61,7 +62,7 @@ class CheckoutPage(BasePage):
         self.accordion.btn.click()
         return self
 
-    def delivery_method_g(self) -> "CheckoutPage":
+    def delivery_method_guest(self) -> "CheckoutPage":
         """
         Choose delivery method
         """
@@ -69,7 +70,7 @@ class CheckoutPage(BasePage):
         self.accordion.btn.click()
         return self
 
-    def payment_method_g(self) -> "CheckoutPage":
+    def payment_method_guest(self) -> "CheckoutPage":
         """
         Choose payment method
         """
@@ -78,13 +79,16 @@ class CheckoutPage(BasePage):
         self.accordion.btn.click()
         return self
 
-    def checkout_options_u(self) -> "CheckoutPage":
+    def checkout_options_user(self, email, password) -> "CheckoutPage":
         """
         Fill checkout options for registered user
         """
+        logging.info('User enter credentials to login')
         self.accordion = CheckoutOptionsUser(self.driver)
-        self.accordion.email_field.send_keys('Nick123@gmail.com')
-        self.accordion.pass_field.send_keys('123123123')
+        self.accordion.email_field.clear()
+        self.accordion.email_field.send_keys(email)
+        self.accordion.pass_field.clear()
+        self.accordion.pass_field.send_keys(password)
         self.accordion.btn_login.click()
         return self
 
@@ -96,10 +100,11 @@ class CheckoutPage(BasePage):
         self.accordion.btn_new_address.click()
         return self
 
-    def add_billing_details_u(self) -> "CheckoutPage":
+    def add_billing_details_user(self) -> "CheckoutPage":
         """
         Fill billing details for users
         """
+        logging.info('User add bulling details')
         self.accordion = BillingDetailsUser(self.driver)
         self.accordion.firstname.send_keys(fake.first_name())
         self.accordion.lastname.send_keys(fake.last_name())
@@ -125,10 +130,11 @@ class CheckoutPage(BasePage):
         self.accordion.btn_new_address_delivery.click()
         return self
 
-    def add_delivery_details_u(self) -> "CheckoutPage":
+    def add_delivery_details_user(self) -> "CheckoutPage":
         """
         Fill delivery details for users
         """
+        logging.info('User add delivery details for purchase')
         self.accordion = DeliveryDetailsUser(self.driver)
         self.accordion.firstname.send_keys(fake.first_name())
         self.accordion.lastname.send_keys(fake.last_name())
@@ -145,7 +151,7 @@ class CheckoutPage(BasePage):
         self.accordion.btn.click()
         return self
 
-    def delivery_method_u(self) -> "CheckoutPage":
+    def delivery_method_user(self) -> "CheckoutPage":
         """
         Press continue button on delivery method
         """
@@ -153,7 +159,7 @@ class CheckoutPage(BasePage):
         self.accordion.btn_s_4.click()
         return self
 
-    def payment_method_u(self) -> "CheckoutPage":
+    def payment_method_user(self) -> "CheckoutPage":
         """
         Press continue button on payment method
         """
@@ -166,5 +172,6 @@ class CheckoutPage(BasePage):
         """
         Confirm order
         """
+        logging.info('Purchase successful')
         Button(self.driver, CheckoutPageLocators.BTN_CONFIRM_ORDER).click()
         return self
