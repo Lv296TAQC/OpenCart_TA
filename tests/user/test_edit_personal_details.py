@@ -19,7 +19,7 @@ def test_edit_account_info(init_driver):
             .input_email(BASE_USER_EMAIL)\
             .input_password(BASE_USER_PASSWORD)\
             .login()\
-            .goto_editaccount_page()\
+            .goto_edit_account_page()\
             .fill_edit_account_form(new_data)
     with pytest.allure.step("Compare password from application with password from db."):
         assert new_data == DbCustomer.get_from_db_by_email(new_data)

@@ -82,7 +82,7 @@ class GreyCartBtn:
         """
         Make webdriver click Checkout Link in grey Cart button.
 
-        :return: Home Page Object with deleted firts item from cart.
+        :return: Home Page Object with deleted first item from cart.
         """
         self.driver.find_element(*BasePageLocators.BTN_DELETE).click()
         logging.info('clicking delete btn')

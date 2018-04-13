@@ -157,7 +157,7 @@ class CartPage(BasePage):
         :return: Cart Page Object with changed qty of added product
         """
         self._product_number(1)
-        input_field = self.row.find_element(*CartPageLocators.QTY_FIELD)
+        input_field = self.row.find_element(*CartPageLocators.QTY_FIELD_2)
         input_field.clear()
         input_field.send_keys(quantity)
         input_field.send_keys(Keys.ENTER)

@@ -63,7 +63,7 @@ def test_send_none_password():
 @allure.step('checks validator fields email incorrect value ')
 def test_email_validator_inc_val():
     page.open()
-    page.agri_checkbox
+    page.agree_checkbox
     page.e_mail = first_name
     page.continue_btn
     assert (first_name in page.validator())
@@ -74,7 +74,7 @@ def test_email_validator_inc_val():
 @allure.step('checks validator fields email correct values ')
 def test_email_validator_correct():
     page.open()
-    page.agri_checkbox
+    page.agree_checkbox
     page.e_mail = email
     page.continue_btn
     assert (first_name not in page.validator())
@@ -85,13 +85,13 @@ def test_email_validator_correct():
 @allure.step('checks whether the error  below is all fields')
 def test_send_more():
     page.open()
-    page.agri_checkbox
+    page.agree_checkbox
     page.first_name = first_name * 10
     page.last_name = last_name * 10
     page.e_mail = email + first_name * 5
     page.telephone = telephone * 10
     page.password = telephone * 10
-    page.confir_password = last_name * 10
+    page.confirm_password = last_name * 10
     page.continue_btn
 
 
@@ -136,13 +136,13 @@ def test_send_more_password_confirm():
 @allure.step('create account')
 def test_send_good():
     page.open()
-    page.agri_checkbox
+    page.agree_checkbox
     page.first_name = first_name
     page.last_name = last_name
     page.e_mail = email
     page.telephone = telephone
     page.password = password
-    page.confir_password = password
+    page.confirm_password = password
     page.continue_btn
     assert 'Your Account Has Been Created!' == page.title()
     page.close()
@@ -152,13 +152,13 @@ def test_send_good():
 @allure.step('create account with the same cread')
 def test_the_same_cred():
     page.open()
-    page.agri_checkbox
+    page.agree_checkbox
     page.first_name = first_name
     page.last_name = last_name
     page.e_mail = email
     page.telephone = telephone
     page.password = password
-    page.confir_password = password
+    page.confirm_password = password
     page.continue_btn
     assert titel_error_cred == page.title_error
     page.close()
@@ -168,7 +168,7 @@ def test_the_same_cred():
 @allure.step('try to be login in')
 def test_login():
     page.login()
-    page.input_passwd = password
+    page.input_password = password
     page.input_email = email
     page.login_btn
     assert "My Account" == page.title()
