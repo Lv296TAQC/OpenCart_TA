@@ -7,6 +7,7 @@ from pages.addaddress import AddAddressPage
 from helpers.settings import BASE_USER_EMAIL, BASE_USER_PASSWORD, BASE_HOST
 
 
+@pytest.allure.testcase('https://ssu-jira.softserveinc.com/browse/OPENCARTPY-38')
 def test_add_correctly_address(init_driver):
     address_data = AddressBook(first_name="edited_firstname",
                                last_name="edited_lastname",
@@ -47,6 +48,7 @@ def test_add_correctly_address(init_driver):
     HomePage(driver).logout()
 
 
+@pytest.allure.testcase('https://ssu-jira.softserveinc.com/browse/OPENCARTPY-43')
 def test_check_error_messages_in_form(init_driver):
     data = AddressBook(address_1="ad",
                        city="c",

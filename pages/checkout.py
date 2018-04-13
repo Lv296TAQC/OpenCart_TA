@@ -83,8 +83,8 @@ class CheckoutPage(BasePage):
         Fill checkout options for registered user
         """
         self.accordion = CheckoutOptionsUser(self.driver)
-        self.accordion.email_field.send_keys('Nick123@gmail.com')
-        self.accordion.pass_field.send_keys('123123123')
+        self.accordion.email_field.send_keys('taqc296@gmail.com')
+        self.accordion.pass_field.send_keys('root')
         self.accordion.btn_login.click()
         return self
 

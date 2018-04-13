@@ -2,10 +2,10 @@ import allure
 import pytest
 from selenium import webdriver
 
-from helpers.local_settings import BASE_HOST
+from helpers.settings import BASE_HOST
 from pages.product import ProductPage
 
-url = BASE_HOST + "index.php?route=product/product&product_id=47"
+url = BASE_HOST + "/index.php?route=product/product&product_id=47"
 
 driver = webdriver.Chrome()
 driver.get(url)
