@@ -27,7 +27,7 @@ class CartPageLocators(BasePageLocators):
     TOTAL_SUM = (By.XPATH, '//*[@id="content"]/form/div/table/tbody/tr/td[6]')
     ALERT_TOO_MUCH_PRODUCT = (By.XPATH, '//*[@id="checkout-cart"]/div[2]')
     PRODUCT_ROW = (By.XPATH, "//button[2]")
-    QTY_FIELD = (By.TAG_NAME, "input")
+    QTY_FIELD_2 = (By.TAG_NAME, "input")
 
     @staticmethod
     def product_number(number: int) -> tuple:

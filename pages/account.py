@@ -14,7 +14,7 @@ class AccountPage(BasePage):
     Account Page methods come here.
     """
 
-    def goto_addressbook_page(self) -> AddressBookPage:
+    def goto_address_book_page(self) -> AddressBookPage:
         """
         Redirect to AddressBook page.
         """
@@ -22,7 +22,7 @@ class AccountPage(BasePage):
         self.driver.find_element(*AccountLocators.ADDRESS_BOOK_LINK).click()
         return AddressBookPage(self.driver)
 
-    def goto_editaccount_page(self) -> EditAccountPage:
+    def goto_edit_account_page(self) -> EditAccountPage:
         """
         Redirect to EditAccount page.
         """

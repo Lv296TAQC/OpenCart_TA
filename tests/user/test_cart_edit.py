@@ -34,7 +34,7 @@ def test_add_goods_to_cart(init_driver):
     with pytest.allure.step('Testing adding goods to cart functional'):
         _PAGE = HomePage(driver)\
             .click_nav_desktops_mac()\
-            .goto_mac_desctops()\
+            .goto_mac_desktops()\
             .add_to_cart()
         success_text = _PAGE.driver.find_element(*ProductPageLocators.ALERT)
         assert 'Success: You have added' in success_text.text

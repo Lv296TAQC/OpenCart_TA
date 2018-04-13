@@ -26,12 +26,12 @@ def test_add_correctly_address(init_driver):
             .input_email(BASE_USER_EMAIL)\
             .input_password(BASE_USER_PASSWORD)\
             .login()\
-            .goto_addressbook_page()
+            .goto_address_book_page()
     with pytest.allure.step("Collect address book list from Address Book page."):
         previous_address_list = AddressBookPage(driver).get_content_info_from_list()
     with pytest.allure.step("Create new address book record."):
         AddressBookPage(driver)\
-            .goto_addaddres_page()\
+            .goto_add_address_page()\
             .fill_address_form(address_data)
     with pytest.allure.step("Collect address book list from Address Book page with new record."):
         updated_address_list = AddressBookPage(driver).get_content_info_from_list()
@@ -60,8 +60,8 @@ def test_check_error_messages_in_form(init_driver):
         .input_email(BASE_USER_EMAIL)\
         .input_password(BASE_USER_PASSWORD)\
         .login()\
-        .goto_addressbook_page()\
-        .goto_addaddres_page()\
+        .goto_address_book_page()\
+        .goto_add_address_page()\
         .fill_address_form(data)
     with pytest.allure.step("Check error message in the 'First Name' field."):
         assert AddAddressPage(
