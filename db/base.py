@@ -5,9 +5,10 @@ from which other ORM classes will be inherited.
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+from helpers.settings import BASE_CONNECTION
 
-WAMP_SERVER_DB = 'mysql://root@localhost/opencart'
-ENGINE = create_engine(WAMP_SERVER_DB)
+
+ENGINE = create_engine(BASE_CONNECTION)
 SESSION = sessionmaker(bind=ENGINE)
 BASE = declarative_base()
 
