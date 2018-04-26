@@ -10,6 +10,9 @@ from helpers.generators import (generate_random_email,
                                 get_random_password)
 from .base import BasePage
 
+RANDOM_NAME_LENGTH = 5
+RANDOM_DIGITS_LENGTH = 9
+
 
 class RegisterPage(BasePage):
     """
@@ -21,12 +24,14 @@ class RegisterPage(BasePage):
 
     def input_firstname(self):
         """Make webdriver set random 'First Name' value with presetted length."""
-        self.driver.find_element_by_id("input-firstname").send_keys(get_random_name(5))
+        self.driver.find_element_by_id("input-firstname")\
+            .send_keys(get_random_name(RANDOM_NAME_LENGTH))
         return self
 
     def input_lastname(self):
         """Make webdriver set random 'Last Name' value with presetted length."""
-        self.driver.find_element_by_id("input-lastname").send_keys(get_random_name(7))
+        self.driver.find_element_by_id("input-lastname")\
+            .send_keys(get_random_name(RANDOM_NAME_LENGTH))
         return self
 
     def input_email(self):
@@ -34,13 +39,15 @@ class RegisterPage(BasePage):
         Make webdriver set random 'E-Mail' value with presetted length of local-name.
         Save generated E-Mail to last_created_email variable (for login).
         """
-        self.last_created_email = generate_random_email(5)
-        self.driver.find_element_by_id("input-email").send_keys(self.last_created_email)
+        self.last_created_email = generate_random_email(RANDOM_NAME_LENGTH)
+        self.driver.find_element_by_id("input-email")\
+            .send_keys(self.last_created_email)
         return self
 
     def input_telephone(self):
         """Make webdriver set random 'Telephone' value with presetted length."""
-        self.driver.find_element_by_id("input-telephone").send_keys(get_random_digit(9))
+        self.driver.find_element_by_id("input-telephone")\
+            .send_keys(get_random_digit(RANDOM_DIGITS_LENGTH))
         return self
 
     def input_password(self):
@@ -48,7 +55,7 @@ class RegisterPage(BasePage):
         Make webdriver set random 'Password' value with presetted length.
         Save generated password to last_created_password variable (for login and confirm).
         """
-        self.last_created_password = get_random_password(8)
+        self.last_created_password = get_random_password(RANDOM_NAME_LENGTH)
         self.driver.find_element_by_id("input-password").send_keys(self.last_created_password)
         return self
 

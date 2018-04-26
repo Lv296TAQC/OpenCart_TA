@@ -15,13 +15,13 @@ from .products import ProductsPage
 from .returns import ReturnsPage
 from .base import BasePage
 
+DRIVER_WAIT_TIME = 1
 
 # pylint: disable=too-many-public-methods
 class HomePage(BasePage):
     """
     Home Page methods come here.
     """
-
     def goto_login(self):
         """
         Go to Login Page.
@@ -104,7 +104,7 @@ class HomePage(BasePage):
         """
         logging.info('clicking top Navigation Desktops Bar')
         self.driver.find_element(*BasePageLocators.DESKTOPS).click()
-        time.sleep(1)
+        time.sleep(DRIVER_WAIT_TIME)
         return self
 
     def click_nav_laptops(self) -> "HomePage":
@@ -158,9 +158,9 @@ class HomePage(BasePage):
         """
         logging.info('clicking top navigation for getting to the Desktops->MAC Products Page')
         self.click_nav_desktops()
-        time.sleep(3)
+        time.sleep(1)
         self.driver.find_element(*BasePageLocators.MAC).click()
-        time.sleep(2)
+        time.sleep(1)
         return ProductsPage(self.driver)
 
     def click_nav_desktops_show_all(self) -> ProductsPage:
@@ -277,12 +277,22 @@ class HomePage(BasePage):
         laptops_list = self.driver.find_elements(*BasePageLocators.LIST_LAPTOPS)
         return laptops_list
 
+    def get_product_quantity(self) -> str:
+        """
+        Get quantity of the products into the Cart text.
+
+        :return: Text of product quantity.
+        """
+        logging.info('getting the text of product quantity into the Cart')
+        edited_cart = self.driver.find_element(*BasePageLocators.BTN_GREY_CARD_AMOUNT)
+        return edited_cart.text
+
     def logout(self) -> "HomePage":
         """
         Logout from user's account.
         """
         logging.info("Click on 'My Account' dropdown and click 'Logout'.")
-        time.sleep(2)
+        time.sleep(DRIVER_WAIT_TIME)
         self.driver.find_element(*BasePageLocators.MY_ACCOUNT_DROPDOWN).click()
         self.driver.find_element(*BasePageLocators.LOGOUT).click()
         return self
