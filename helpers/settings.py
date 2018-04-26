@@ -16,7 +16,8 @@ BASE_USER_PASSWORD = "root"
 BASE_CONNECTION = "mysql://root@localhost/opencart"
 URL = "http://127.0.0.1/index.php?route=product/product&product_id=47"
 
-PRESET_BASE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "dbpresets")
+PRESET_BASE_PATH = os.path.abspath(
+    os.path.join(os.path.dirname(os.path.dirname(__file__)), "dbpresets"))
 DB_PRESET = {
     "user_base": os.path.join(PRESET_BASE_PATH, "user", "base.sql"),
     "guest_base": os.path.join(PRESET_BASE_PATH, "guest", "base.sql")
