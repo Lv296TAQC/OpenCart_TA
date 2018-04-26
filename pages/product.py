@@ -8,6 +8,8 @@ from locators.product import ProductPageLocators
 from .base import BasePage
 from .cart import CartPage
 
+DRIVER_WAIT_TIME = 1
+
 
 # pylint: disable=too-few-public-methods
 class ProductPage(BasePage):
@@ -23,7 +25,7 @@ class ProductPage(BasePage):
         """
         logging.info('adding product to the Cart')
         self.driver.find_element(*ProductPageLocators.BTN_CART).click()
-        self.driver.implicitly_wait(5)
+        time.sleep(DRIVER_WAIT_TIME)
         return self
 
     def goto_cart(self) -> "CartPage":
@@ -33,6 +35,16 @@ class ProductPage(BasePage):
         :return: Cart Page Object.
         """
         logging.info('clicking Cart Link in top Bar')
-        time.sleep(2)
+        time.sleep(DRIVER_WAIT_TIME)
         self.driver.find_element(*ProductPageLocators.GO_CART).click()
         return CartPage(self.driver)
+
+    def get_product_add_confirmation(self) -> str:
+        """
+        Get success product add alert text.
+
+        :return: Text of product add alert
+        """
+        logging.info('getting the text of success product add to Cart')
+        success_text = self.driver.find_element(*ProductPageLocators.ALERT)
+        return success_text.text
