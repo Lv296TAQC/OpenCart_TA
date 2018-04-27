@@ -9,7 +9,7 @@ from pages.returns import ReturnsPage
 
 
 @pytest.fixture()
-def driver(init_driver):
+def driver(init_driver, test_base):
     driver = init_driver
     driver.get(BASE_HOST)
     (HomePage(driver).goto_login()
