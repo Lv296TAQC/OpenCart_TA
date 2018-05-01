@@ -1,6 +1,8 @@
 """
 Locators for Cart Page are placed here
 """
+from typing import Tuple
+
 from selenium.webdriver.common.by import By
 from .base import BasePageLocators
 
@@ -41,18 +43,18 @@ class CartPageLocators(BasePageLocators):
         return product_row
 
     @staticmethod
-    def find_product_edit_field(edit_model: str) -> tuple:
+    def find_product_edit_field(edit_model: str) -> Tuple:
         """
         Wrapper for product edit field locator.
 
         :param edit_model: Model of product, which quantity we want to edit.
         :return: Tuple for finding product's edit field
         """
-        field = (By.XPATH, '//a[text()="{}"]'.format(edit_model))
-        return field
+        edit_field = (By.XPATH, '//a[text()="{}"]'.format(edit_model))
+        return edit_field
 
     @staticmethod
-    def find_product_delete_field(delete_model: str) -> tuple:
+    def find_product_delete_field(delete_model: str) -> Tuple:
         """
         Wrapper for product delete field locator.
 
@@ -63,7 +65,7 @@ class CartPageLocators(BasePageLocators):
         return delete
 
     @staticmethod
-    def find_product_link(product_name: str) -> tuple:
+    def find_product_link(product_name: str) -> Tuple:
         """
         Wrapper for product name locator on the Cart page.
 

@@ -56,8 +56,6 @@ class CartPage(BasePage):
         :return: Cart Page Object with edited certain product quantity.
         """
         logging.info('editing quantity of certain product in Cart by model')
-        if edit_model == "Product 11":
-            edit_model = edit_model.lower()
         edit_field = self.driver.find_element(
             *CartPageLocators.find_product_edit_field(edit_model))
         edit_field.clear()
@@ -72,9 +70,7 @@ class CartPage(BasePage):
         :param delete_model: Model of product, which we want to delete from Cart.
         :return: Cart Page Object with deleted certain product from Cart.
         """
-        logging.info('editing quantity of certain product in Cart by model')
-        if delete_model == "Product 11":
-            delete_model = delete_model.lower()
+        logging.info('certain product from Cart by model')
         self.driver.find_element(
             *CartPageLocators.find_product_delete_field(delete_model)).click()
         self.driver.refresh()

@@ -42,3 +42,13 @@ class Outputs:
         :return: String with new quantity of product in Cart.
         """
         return f'{count} item(s)'
+
+    @staticmethod
+    def get_edited_product_price(count: float) -> str:
+        """
+        Contains static method that pass string with edited product price.
+
+        :param count: New product price in Cart.
+        :return: String with new price of product in Cart.
+        """
+        return f'${count}'
