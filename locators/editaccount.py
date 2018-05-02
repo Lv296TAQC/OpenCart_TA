@@ -16,3 +16,6 @@ class EditAccountLocators(BasePageLocators):
     EMAIL_FIELD = (By.ID, "input-email")
     TELEPHONE_FIELD = (By.ID, "input-telephone")
     BTN_CONTINUE = (By.XPATH, "//form[@class='form-horizontal']/div/div[2]/input")
+    FIRSTNAME_ERROR = (By.XPATH, "//form[@class='form-horizontal']/fieldset/div[1]/div/div")
+    LASTNAME_ERROR = (By.XPATH, "//form[@class='form-horizontal']/fieldset/div[2]/div/div")
+    TELEPHONE_ERROR = (By.XPATH, "//form[@class='form-horizontal']/fieldset/div[4]/div/div")

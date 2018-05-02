@@ -1,23 +1,16 @@
 from operator import attrgetter
 import pytest
-from models.addressbook import AddressBook
 from pages.home import HomePage
 from pages.addressbook import AddressBookPage
 from pages.addaddress import AddAddressPage
-from helpers.settings import BASE_USER_EMAIL, BASE_USER_PASSWORD, BASE_HOST
+from helpers.constants import Returns
+from helpers.settings import BASE_USER_EMAIL, BASE_USER_PASSWORD, BASE_HOST, TEST_DATA
+from helpers.data import load_from_json_file
 
 
 @pytest.allure.testcase('https://ssu-jira.softserveinc.com/browse/OPENCARTPY-38')
-def test_add_correctly_address(init_driver):
-    address_data = AddressBook(first_name="edited_firstname",
-                               last_name="edited_lastname",
-                               company="edited_company",
-                               address_1="edited_address1",
-                               address_2="edited_address2",
-                               city="edited_city",
-                               post_code="e_postcode",
-                               country="Ukraine",
-                               region_state="Ternopil's'ka Oblast'")
+@pytest.mark.parametrize("address_data", load_from_json_file(TEST_DATA["addressbook_valid"]))
+def test_add_correctly_address(init_driver, address_data):
     driver = init_driver
     driver.get(BASE_HOST)
     with pytest.allure.step("Go to Address Book page."):
@@ -41,7 +34,7 @@ def test_add_correctly_address(init_driver):
         previous_address_list.append(info_from_new_address)
     with pytest.allure.step("Retrieving info about successfully added address."):
         assert AddressBookPage(
-            driver).get_alert_message_text() == 'Your address has been successfully added'
+            driver).get_alert_message_text() == Returns.TEXT_SUCCESS_ADDRESS_ADDED
     with pytest.allure.step("Compare old and new lists."):
         assert sorted(previous_address_list, key=attrgetter(
             'content')) == sorted(updated_address_list, key=attrgetter('content'))
@@ -49,10 +42,8 @@ def test_add_correctly_address(init_driver):
 
 
 @pytest.allure.testcase('https://ssu-jira.softserveinc.com/browse/OPENCARTPY-43')
-def test_check_error_messages_in_form(init_driver):
-    data = AddressBook(address_1="ad",
-                       city="c",
-                       post_code="p")
+@pytest.mark.parametrize("data", load_from_json_file(TEST_DATA["addressbook_invalid"]))
+def test_add_incorrectly_address(init_driver, data):
     driver = init_driver
     driver.get(BASE_HOST)
     HomePage(driver)\
@@ -65,20 +56,20 @@ def test_check_error_messages_in_form(init_driver):
         .fill_address_form(data)
     with pytest.allure.step("Check error message in the 'First Name' field."):
         assert AddAddressPage(
-            driver).get_firstname_error() == "First Name must be between 1 and 32 characters!"
+            driver).get_firstname_error() == Returns.TEXT_DANGER_FIRST_NAME_INVALID
     with pytest.allure.step("Check error message in the 'Last Name' field."):
         assert AddAddressPage(
-            driver).get_lastname_error() == "Last Name must be between 1 and 32 characters!"
+            driver).get_lastname_error() == Returns.TEXT_DANGER_LAST_NAME_INVALID
     with pytest.allure.step("Check error message in the 'Address 1' field."):
         assert AddAddressPage(
-            driver).get_address1_error() == "Address must be between 3 and 128 characters!"
+            driver).get_address1_error() == Returns.TEXT_DANGER_ADDRESS1_INVALID
     with pytest.allure.step("Check error message in the 'City' field."):
         assert AddAddressPage(
-            driver).get_city_error() == "City must be between 2 and 128 characters!"
+            driver).get_city_error() == Returns.TEXT_DANGER_CITY_INVALID
     with pytest.allure.step("Check error message in the 'Post Code' field."):
         assert AddAddressPage(
-            driver).get_postcode_error() == "Postcode must be between 2 and 10 characters!"
+            driver).get_postcode_error() == Returns.TEXT_DANGER_POSTCODE_INVALID
     with pytest.allure.step("Check error message in the 'Country' drop down option."):
         assert AddAddressPage(
-            driver).get_region_error() == "Please select a region / state!"
+            driver).get_region_error() == Returns.TEXT_DANGER_REGION_STATE_INVALID
     HomePage(driver).logout()

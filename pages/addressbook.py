@@ -112,3 +112,16 @@ class AddressBookPage(BasePage):
         info = self.driver.find_elements(*AddressBookLocators.CONTENT_LIST)[index].text
         content = re.sub(r'\s', '', info)
         return AddressBook(content=content)
+
+    def get_list_of_ids(self) -> List[int]:
+        """
+        Get id list from UI.
+
+        :return: list with id's.
+        """
+        id_list = []
+        logging.info(f"Get id's list {id_list}")
+        data = self.driver.find_elements(*AddressBookLocators.BTN_EDIT_LIST)
+        for ui_id in data:
+            id_list.append(int(ui_id.get_attribute("href")[74:]))
+        return sorted(id_list)
