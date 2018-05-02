@@ -18,15 +18,14 @@ def login_setup(request):
         .input_email(BASE_USER_EMAIL)\
         .login()\
         .goto_homepage()
+    while Outputs.TEXT_ZERO_PRODUCT_QUANTITY not in HomePage(driver).get_product_quantity():
+        HomePage(driver).goto_cart().delete_good_from_cart()
     yield driver
 
     def logout_teardown():
-        if Outputs.TEXT_ZERO_PRODUCT_QUANTITY in HomePage(driver).get_product_quantity():
-            HomePage(driver).logout()
-            driver.close()
-        else:
+        while Outputs.TEXT_ZERO_PRODUCT_QUANTITY not in HomePage(driver).get_product_quantity():
             HomePage(driver).goto_cart().delete_good_from_cart()
-            HomePage(driver).logout()
-            driver.close()
+        HomePage(driver).logout()
+        driver.close()
 
     request.addfinalizer(logout_teardown)
