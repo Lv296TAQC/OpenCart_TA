@@ -43,3 +43,18 @@ class DbAddress:
                            city=address.city,
                            country=country[0],
                            region_state=zone[0])
+
+    @staticmethod
+    def get_id_list_from_db():
+        """
+        Get id's from db.
+
+        :return: list with id's.
+        """
+        session = session_factory()
+        query = session.query(Address.address_id).all()
+        session.close()
+        id_data = []
+        for data in query:
+            id_data.append(data[0])
+        return sorted(id_data)

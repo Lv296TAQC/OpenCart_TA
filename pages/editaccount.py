@@ -54,3 +54,30 @@ class EditAccountPage(BasePage):
         logging.info("Take email data and convert into PersonalDetails object.")
         data = self.driver.find_element(*EditAccountLocators.EMAIL_FIELD).get_attribute('value')
         return PersonalDetails(email=data)
+
+    def get_user_firstname_error(self) -> str:
+        """
+        Get an error message from the 'First Name' field.
+
+        :return: firstname error message.
+        """
+        logging.info("Get error message from 'First Name' field.")
+        return self.driver.find_element(*EditAccountLocators.FIRSTNAME_ERROR).text
+
+    def get_user_lastname_error(self) -> str:
+        """
+        Get an error message from the 'Last Name' field.
+
+        :return: lastname error message.
+        """
+        logging.info("Get error message from 'Last Name' field.")
+        return self.driver.find_element(*EditAccountLocators.LASTNAME_ERROR).text
+
+    def get_user_telephone_error(self) -> str:
+        """
+        Get an error message from the 'Telephone' field.
+
+        :return: address1 error message.
+        """
+        logging.info("Get error message from 'Telephone' field.")
+        return self.driver.find_element(*EditAccountLocators.TELEPHONE_ERROR).text

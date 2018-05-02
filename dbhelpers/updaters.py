@@ -64,6 +64,8 @@ def create_all_db_tables(database):
 
     :param database: sql file with db tables.
     """
+    drop_all_db_tables()
+
     # Open the .sql file
     sql_file = open(r'{}'.format(database), 'r')
 

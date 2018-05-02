@@ -2,6 +2,7 @@
 Contains Return class
 """
 
+
 # pylint: disable=too-few-public-methods
 class Returns:
     """
@@ -20,6 +21,14 @@ class Returns:
     TEXT_DANGER_EMAIL_INVALID = 'E-Mail Address does not appear to be valid!'
     TEXT_DANGER_TELEPHONE_INVALID = 'Telephone must have 14 characters'
     TEXT_DANGER_ORDER_ID_INVALID = 'Order ID required!'
+    TEXT_DANGER_ADDRESS1_INVALID = 'Address must be between 3 and 128 characters!'
+    TEXT_DANGER_CITY_INVALID = 'City must be between 2 and 128 characters!'
+    TEXT_DANGER_POSTCODE_INVALID = 'Postcode must be between 2 and 10 characters!'
+    TEXT_DANGER_REGION_STATE_INVALID = 'Please select a region / state!'
+    TEXT_DANGER_TELEPHONE_FORM = 'Telephone must be between 3 and 32 characters!'
+
+    TEXT_SUCCESS_ADDRESS_ADDED = 'Your address has been successfully added'
+    TEXT_SUCCESS_ADDRESS_UPDATED = 'Your address has been successfully updated'
 
     DANGER_COLOR = 'rgba(169, 68, 66, 1)'
 
