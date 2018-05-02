@@ -14,6 +14,7 @@ def driver(init_driver):
     yield driver
 
 
+@pytest.mark.skip(reason="this person already got a job")
 @pytest.allure.testcase('https://ssu-jira.softserveinc.com/browse/OPENCARTPY-35')
 @pytest.allure.severity(pytest.allure.severity_level.CRITICAL)
 @pytest.allure.CRITICAL
@@ -24,6 +25,7 @@ def test_positive_and_submit(driver):
     assert 'return/success' in driver.current_url
 
 
+@pytest.mark.skip(reason="this person already got a job")
 @pytest.allure.testcase('https://ssu-jira.softserveinc.com/browse/OPENCARTPY-35')
 @pytest.allure.severity(pytest.allure.severity_level.MINOR)
 @pytest.allure.NORMAL
@@ -34,6 +36,7 @@ def test_positive_and_back(driver):
     assert 'login' in driver.current_url
 
 
+@pytest.mark.skip(reason="this person already got a job")
 @pytest.mark.negative
 @pytest.allure.testcase('https://ssu-jira.softserveinc.com/browse/OPENCARTPY-35')
 @pytest.allure.severity(pytest.allure.severity_level.NORMAL)
@@ -68,6 +71,7 @@ def test_required_fields(driver):
                 Returns.DANGER_COLOR)
 
 
+@pytest.mark.skip(reason="this person already got a job")
 @pytest.fixture(
     params=[
         {
@@ -85,6 +89,7 @@ def invalid_data(request):
     return request.param
 
 
+@pytest.mark.skip(reason="this person already got a job")
 @pytest.mark.negative
 @pytest.allure.testcase('https://ssu-jira.softserveinc.com/browse/OPENCARTPY-35')
 @pytest.allure.severity(pytest.allure.severity_level.NORMAL)

@@ -21,6 +21,7 @@ def driver(init_driver):
     HomePage(driver).logout()
 
 
+@pytest.mark.skip(reason="this person already got a job")
 @pytest.allure.testcase('https://ssu-jira.softserveinc.com/browse/OPENCARTPY-36')
 @pytest.allure.severity(pytest.allure.severity_level.CRITICAL)
 @pytest.allure.CRITICAL
@@ -32,6 +33,7 @@ def test_positive_and_submit(driver, mode):
     assert 'return/success' in driver.current_url
 
 
+@pytest.mark.skip(reason="this person already got a job")
 @pytest.allure.testcase('https://ssu-jira.softserveinc.com/browse/OPENCARTPY-36')
 @pytest.allure.severity(pytest.allure.severity_level.MINOR)
 @pytest.allure.NORMAL
@@ -43,6 +45,7 @@ def test_positive_and_back(driver, mode):
     assert 'account' in driver.current_url
 
 
+@pytest.mark.skip(reason="this person already got a job")
 @pytest.allure.testcase('https://ssu-jira.softserveinc.com/browse/OPENCARTPY-36')
 @pytest.allure.severity(pytest.allure.severity_level.NORMAL)
 @pytest.allure.NORMAL
