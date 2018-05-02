@@ -18,6 +18,7 @@ def driver(init_driver):
     HomePage(driver).logout()
 
 
+@pytest.mark.skip(reason="this person already got a job")
 @pytest.allure.testcase('https://ssu-jira.softserveinc.com/browse/OPENCARTPY-32')
 @pytest.allure.severity(pytest.allure.severity_level.CRITICAL)
 def test_valid_checkout(driver):
@@ -34,6 +35,7 @@ def test_valid_checkout(driver):
     CheckoutPage(driver).confirm_order()
 
 
+@pytest.mark.skip(reason="this person already got a job")
 @pytest.allure.testcase('https://ssu-jira.softserveinc.com/browse/OPENCARTPY-32')
 def test_invalid_checkout(driver):
     email = 'exemple@gmail.com'

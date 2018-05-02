@@ -17,6 +17,7 @@ def driver(init_driver):
     yield driver
 
 
+@pytest.mark.skip(reason="this person already got a job")
 def test_base_flow(driver):
     (CheckoutPage(driver).checkout_options_guest()
                          .add_billing_details_guest()

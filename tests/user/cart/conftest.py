@@ -29,3 +29,12 @@ def login_setup(request):
         driver.close()
 
     request.addfinalizer(logout_teardown)
+
+
+@pytest.fixture(scope="module", autouse=False, params=[
+    (2, 200.00),
+    (3, 300.00),
+    (4, 500.00)
+    ])
+def param_test(request):
+    return request.param
