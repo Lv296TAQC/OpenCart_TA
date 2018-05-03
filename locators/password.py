@@ -13,4 +13,4 @@ class PasswordLocators(BasePageLocators):
 
     PASSWORD_FIELD = (By.ID, "input-password")
     PASSWORD_CONFIRM_FIELD = (By.ID, "input-confirm")
-    BTN_CONTINUE = (By.XPATH, "//form[@class='form-horizontal']/div/div[2]/input")
+    BTN_CONTINUE = (By.XPATH, "//input[@type='submit']")

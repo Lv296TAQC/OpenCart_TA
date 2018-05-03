@@ -1,26 +1,18 @@
 import pytest
 from models.password import Password
-from pages.home import HomePage
 from pages.account import AccountPage
-from pages.password import PasswordPage
 from dbhelpers.customer import DbCustomer
 from helpers.password import encrypt_user_password
-from helpers.settings import BASE_USER_EMAIL, BASE_USER_PASSWORD, BASE_HOST
+from helpers.settings import BASE_USER_PASSWORD
 
 
 @pytest.allure.testcase('https://ssu-jira.softserveinc.com/browse/OPENCARTPY-40')
 def test_compare_changed_password(init_driver):
-    user_password = Password(password='root')
+    user_password = Password(password=BASE_USER_PASSWORD)
     driver = init_driver
-    driver.get(BASE_HOST)
-    with pytest.allure.step("Change password on Password page."):
-        HomePage(driver)\
-            .goto_login()\
-            .input_email(BASE_USER_EMAIL)\
-            .input_password(BASE_USER_PASSWORD)\
-            .login()\
-            .goto_password_page()\
-            .fill_password_form(user_password)
+    AccountPage(driver)\
+        .goto_password_page()\
+        .fill_password_form(user_password)
     with pytest.allure.step("Retrieving info about successfully updated password."):
         assert (AccountPage(driver).get_account_alert_message_text() ==
                 'Success: Your password has been successfully updated.')
@@ -36,4 +28,3 @@ def test_compare_changed_password(init_driver):
         password_from_db = DbCustomer.get_password_by_email(email_from_form)
     with pytest.allure.step("Compare password from UI with password from DB."):
         assert encrypted_pass == password_from_db
-    HomePage(driver).logout()

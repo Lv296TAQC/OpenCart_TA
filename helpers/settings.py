@@ -23,7 +23,6 @@ PRESET_BASE_PATH = os.path.abspath(
     os.path.join(os.path.dirname(os.path.dirname(__file__)), "dbpresets"))
 DB_PRESET = {
     "user_base": os.path.join(PRESET_BASE_PATH, "user", "base.sql"),
-    "user_addressbook": os.path.join(PRESET_BASE_PATH, "user", "addressbook.sql"),
     "guest_base": os.path.join(PRESET_BASE_PATH, "guest", "base.sql")
 }
 

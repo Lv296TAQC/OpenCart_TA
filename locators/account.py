@@ -14,4 +14,4 @@ class AccountLocators(BasePageLocators):
     EDIT_ACCOUNT_LINK = (By.XPATH, "//div[@id='content']//a[.='Edit Account']")
     YOUR_STORE_LINK = (By.LINK_TEXT, "Your Store")
     PASSWORD_LINK = (By.XPATH, "//div[@id='content']//a[.='Password']")
-    INFO_MESSAGE = (By.XPATH, "//div[@id='account-account']/div[1]")
+    INFO_MESSAGE = (By.XPATH, "//div[@class='alert alert-success alert-dismissible']")
