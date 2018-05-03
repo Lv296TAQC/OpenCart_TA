@@ -45,7 +45,7 @@ class GreyCartBtn:
         if empty_cart_btn_text:
             logging.info("Your cart button is empty!")
             return True
-        logging.error("Something went wrong!")
+        logging.error("Your Cart was not empty by default!!")
         return False
 
     def click_btn_grey_cart(self) -> "GreyCartBtn":
@@ -86,4 +86,5 @@ class GreyCartBtn:
         """
         self.driver.find_element(*BasePageLocators.BTN_DELETE).click()
         logging.info('clicking delete btn')
+        self.driver.refresh()
         return self

@@ -11,7 +11,8 @@ class ProductsPageLocators(BasePageLocators):
     """
     Locators for Products Page are placed here
     """
-    MAC_PRODUCT_IMAGE = (By.XPATH, '//*[@id="content"]/div[2]/div/div/div[1]/a/img')
+    MAC_PRODUCT_IMAGE = (By.XPATH,
+                         '//a[contains(@href, "route=product/product&path=20_27&product_id=41")]')
 
     @staticmethod
     def find_product_link(product_name: str) -> tuple:
