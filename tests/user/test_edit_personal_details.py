@@ -1,8 +1,8 @@
 import pytest
-from pages.home import HomePage
+from pages.account import AccountPage
 from pages.editaccount import EditAccountPage
 from dbhelpers.customer import DbCustomer
-from helpers.settings import BASE_USER_EMAIL, BASE_USER_PASSWORD, BASE_HOST, TEST_DATA
+from helpers.settings import TEST_DATA
 from helpers.data import load_from_json_file
 from helpers.constants import Returns
 
@@ -12,30 +12,22 @@ from helpers.constants import Returns
 def test_edit_correct_account_info(init_driver, new_data):
     with pytest.allure.step("Fill 'Edit Account' form with data."):
         driver = init_driver
-        driver.get(BASE_HOST)
-        HomePage(driver)\
-            .goto_login()\
-            .input_email(BASE_USER_EMAIL)\
-            .input_password(BASE_USER_PASSWORD)\
-            .login()\
+        AccountPage(driver)\
             .goto_edit_account_page()\
             .fill_edit_account_form(new_data)
+    with pytest.allure.step("Retrieving info about successfully updated account."):
+        assert AccountPage(
+            driver).get_account_alert_message_text() == Returns.TEXT_SUCCESS_ACCOUNT_UPDATED
     with pytest.allure.step("Compare data from application with data from db."):
         assert new_data == DbCustomer.get_from_db_by_email(new_data)
-    HomePage(driver).logout()
 
 
-@pytest.allure.testcase('https://ssu-jira.softserveinc.com/browse/OPENCARTPY-39')
+@pytest.allure.testcase('https://ssu-jira.softserveinc.com/browse/OPENCARTPY-44')
 @pytest.mark.parametrize("new_data", load_from_json_file(TEST_DATA["personalinfo_invalid"]))
 def test_edit_incorrect_account_info(init_driver, new_data):
     with pytest.allure.step("Fill 'Edit Account' form with data."):
         driver = init_driver
-        driver.get(BASE_HOST)
-        HomePage(driver)\
-            .goto_login()\
-            .input_email(BASE_USER_EMAIL)\
-            .input_password(BASE_USER_PASSWORD)\
-            .login()\
+        AccountPage(driver)\
             .goto_edit_account_page()\
             .fill_edit_account_form(new_data)
     with pytest.allure.step("Check error message in the 'First Name' field."):
@@ -47,4 +39,3 @@ def test_edit_incorrect_account_info(init_driver, new_data):
     with pytest.allure.step("Check error message in the 'Telephone' field."):
         assert EditAccountPage(
             driver).get_user_telephone_error() == Returns.TEXT_DANGER_TELEPHONE_FORM
-    HomePage(driver).logout()

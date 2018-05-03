@@ -29,6 +29,7 @@ class Returns:
 
     TEXT_SUCCESS_ADDRESS_ADDED = 'Your address has been successfully added'
     TEXT_SUCCESS_ADDRESS_UPDATED = 'Your address has been successfully updated'
+    TEXT_SUCCESS_ACCOUNT_UPDATED = 'Success: Your account has been successfully updated.'
 
     DANGER_COLOR = 'rgba(169, 68, 66, 1)'
 

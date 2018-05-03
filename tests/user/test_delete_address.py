@@ -1,20 +1,13 @@
 import pytest
-from pages.home import HomePage
+from dbhelpers.address import DbAddress
+from pages.account import AccountPage
 from pages.addressbook import AddressBookPage
-from dbhelpers.updaters import create_all_db_tables
-from helpers.settings import BASE_USER_EMAIL, BASE_USER_PASSWORD, BASE_HOST, DB_PRESET
 
 
 @pytest.allure.testcase('https://ssu-jira.softserveinc.com/browse/OPENCARTPY-42')
-def test_delete_address_by_index(init_driver, index=1):
-    create_all_db_tables(DB_PRESET["user_addressbook"])
+def test_delete_address_by_index(init_user_db, init_driver, index=1):
     driver = init_driver
-    driver.get(BASE_HOST)
-    HomePage(driver)\
-        .goto_login()\
-        .input_email(BASE_USER_EMAIL)\
-        .input_password(BASE_USER_PASSWORD)\
-        .login()\
+    AccountPage(driver)\
         .goto_address_book_page()
     with pytest.allure.step("Take the number of address book records on the page."):
         previous_address_list = AddressBookPage(driver).records_count()
@@ -24,4 +17,5 @@ def test_delete_address_by_index(init_driver, index=1):
         updated_address_list = AddressBookPage(driver).records_count()
     with pytest.allure.step("Compare the length of the list before and after deleting the record"):
         assert previous_address_list - 1 == updated_address_list
-    HomePage(driver).logout()
+    with pytest.allure.step("Collect id's list from db."):
+        assert len(DbAddress.get_id_list_from_db()) == 1

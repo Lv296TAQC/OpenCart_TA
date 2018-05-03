@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Апр 23 2018 г., 07:02
+-- Время создания: Апр 27 2018 г., 10:45
 -- Версия сервера: 5.6.17
 -- Версия PHP: 5.5.12
 
@@ -41,7 +41,14 @@ CREATE TABLE IF NOT EXISTS `oc_address` (
   `custom_field` text NOT NULL,
   PRIMARY KEY (`address_id`),
   KEY `customer_id` (`customer_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Дамп данных таблицы `oc_address`
+--
+
+INSERT INTO `oc_address` VALUES(1, 1, 'FirstName1', 'LastName1', 'Company1', 'Address1_1', 'Address1_2', 'City1', 'postcode1', 220, 3493, '');
+INSERT INTO `oc_address` VALUES(2, 1, 'FirstName2', 'LastName2', 'Company2', 'Address2_1', 'Address2_2', 'City2', 'postcode2', 220, 3500, '');
 
 -- --------------------------------------------------------
 
@@ -3079,6 +3086,7 @@ CREATE TABLE IF NOT EXISTS `oc_session` (
 
 INSERT INTO `oc_session` VALUES('0a4cf123955090031716b8f18c', '{"language":"en-gb","currency":"USD","customer_id":"1"}', '2018-04-23 05:29:00');
 INSERT INTO `oc_session` VALUES('190c4a764bc679f61db19f5685', '{"language":"en-gb","currency":"USD"}', '2018-04-20 05:27:42');
+INSERT INTO `oc_session` VALUES('407c4da092989f8311ff0fefa0', '{"language":"en-gb","currency":"USD","customer_id":"1","shipping_address":false}', '2018-04-27 09:13:26');
 
 -- --------------------------------------------------------
 
