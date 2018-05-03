@@ -1,3 +1,4 @@
+import allure
 import pytest
 
 from helpers.constants import Outputs
@@ -21,13 +22,18 @@ def login_setup(request):
     while Outputs.TEXT_ZERO_PRODUCT_QUANTITY not in HomePage(driver).get_product_quantity():
         HomePage(driver).goto_cart().delete_good_from_cart()
     yield driver
+    attach = driver.get_screenshot_as_png()
+    if request.node.rep_setup.failed:
+        allure.attach(request.function.__name__, attach, allure.attach_type.PNG)
+    elif request.node.rep_setup.passed:
+        if request.node.rep_call.failed:
+            allure.attach(request.function.__name__, attach, allure.attach_type.PNG)
 
     def logout_teardown():
         while Outputs.TEXT_ZERO_PRODUCT_QUANTITY not in HomePage(driver).get_product_quantity():
             HomePage(driver).goto_cart().delete_good_from_cart()
         HomePage(driver).logout()
         driver.close()
-
     request.addfinalizer(logout_teardown)
 
 

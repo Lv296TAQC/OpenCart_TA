@@ -12,21 +12,19 @@ class CartPageLocators(BasePageLocators):
     """
     Locators for Cart Page are placed here
     """
-    GO_CHECKOUT = (By.XPATH, '//*[@id="content"]/div[3]/div[2]/a')
+    GO_CHECKOUT = (By.XPATH, '//a[contains(@href, "route=checkout/checkout")]')
     EMPTY_CART_TEXT = (By.XPATH, '//p[text()="Your shopping cart is empty!"]')
-    BTN_CONTINUE = (By.XPATH, '//*[@id="content"]/div/div/a')
-    QTY_FIELD = (By.XPATH, '//*[@id="content"]/form/div/table/tbody/tr/td[4]/div/input')
-    BTN_UPDATE = (
-        By.XPATH, '//*[@id="content"]/form/div/table/tbody/tr/td[4]/div/span/button[1]')
-    BTN_DELETE = (
-        By.XPATH, '//*[@id="content"]/form/div/table/tbody/tr/td[4]/div/span/button[2]')
+    BTN_CONTINUE = (By.XPATH, '//a[contains(@href, "route=common/home")]')
+    QTY_FIELD = (By.XPATH, '//div[@id="content"]//input')
+    BTN_UPDATE = (By.XPATH, '//div[@id="content"]//button[1]')
+    BTN_DELETE = (By.XPATH, '//div[@id="content"]//button[2]')
 
     BTN_DELETE_PRODUCT = (By.CLASS_NAME, 'btn btn-danger')
     BTN_EDIT_QTY = (By.CLASS_NAME, 'btn-primary')
     FIELD_PRODUCT_QTY = (By.CLASS_NAME, 'form-control')
     MODIFIED_CART_TEXT = (
         By.XPATH, '//div[contains(text(),"You have modified your shopping cart!")]')
-    TOTAL_SUM = (By.XPATH, '//*[@id="content"]/form/div/table/tbody/tr/td[6]')
+    TOTAL_SUM = (By.XPATH, '//div[@id="content"]/tbody/td[6]')
     ALERT_TOO_MUCH_PRODUCT = (By.XPATH, '//*[@id="checkout-cart"]/div[2]')
     PRODUCT_ROW = (By.XPATH, "//button[2]")
     QTY_FIELD_2 = (By.TAG_NAME, "input")

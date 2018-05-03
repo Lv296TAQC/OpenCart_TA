@@ -11,9 +11,9 @@ class BasePageLocators:
     """
     All common locators for all Pages are placed here
     """
-    GO_CART = (By.XPATH, '//*[@id="top-links"]/ul/li[4]/a/i')
-    MY_ACCOUNT_DROPDOWN = (By.XPATH, '//*[@id="top-links"]/ul/li[2]/a')
-    GO_LOGIN = (By.XPATH, '//*[@id="top-links"]/ul/li[2]/ul/li[2]/a')
+    GO_CART = (By.XPATH, '//a[contains(@title, "Shopping Cart")]')
+    MY_ACCOUNT_DROPDOWN = (By.XPATH, '//a[contains(@title, "My Account")]')
+    GO_LOGIN = (By.XPATH, '//a[contains(@href, "route=account/login")]')
     DESKTOPS = (By.XPATH, '//a[text()="Desktops"]')
     LAPTOPS = (By.XPATH, '//a[text()="Laptops & Notebooks"]')
     TABLETS = (By.XPATH, '//a[text()="Tablets"]')
@@ -24,9 +24,9 @@ class BasePageLocators:
     BTN_GREY_CART = (By.ID, "cart")
     EMPTY_CART_BUTTON_TEXT = (By.XPATH, '//p[text()="Your shopping cart is empty!"]')
     BTN_GREY_CARD_AMOUNT = (By.ID, "cart-total")
-    LINK_VIEW_CART = (By.XPATH, '//*[@id="cart"]/ul/li[2]/div/p/a[1]')
-    LINK_CHECKOUT = (By.XPATH, '//*[@id="cart"]/ul/li[2]/div/p/a[2]')
-    BTN_DELETE = (By.XPATH, '//*[@id="cart"]/ul/li[1]/table/tbody/tr[1]/td[5]/button')
+    LINK_VIEW_CART = (By.XPATH, '//a[contains(@href, "route=checkout/cart")]')
+    LINK_CHECKOUT = (By.XPATH, '//a[contains(@href, "route=checkout/checkout")]')
+    BTN_DELETE = (By.XPATH, '//*[contains(@title, "Remove")]')
     COMPONENTS = (By.XPATH, '//a[text()="Components"]')
     MONITORS = (By.XPATH, '//a[contains(text(),"Monitors")]')
     MAC = (By.XPATH, '//a[contains(text(),"Mac")]')
